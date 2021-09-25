@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "coenraads.bracket-pair-colorizer-2",
+        "vmsynkov.colonize",
+        "dart-code.dart-code",
+        "dart-code.flutter",
+        "eamodio.gitlens",
+        "nash.awesome-flutter-snippets",
+        "bendixma.dart-data-class-generator"
+    ]
+}
