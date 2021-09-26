@@ -11,6 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  repository:
+    path: packages/repository
 
   cupertino_icons: ^1.0.2
   provider: ^6.0.1
@@ -18,8 +20,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  analysis:
+    path: packages/analysis
 
-  flutter_lints: ^1.0.0
   flutter_flavorizr: ^2.0.0
 
 flutter:
