@@ -20,6 +20,33 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^1.0.0
+  flutter_flavorizr: ^2.0.0
 
 flutter:
   uses-material-design: true
+
+flavorizr:
+  app:
+    android:
+      flavorDimensions: "flavor-type"
+    ios:
+
+  flavors:
+    dev:
+      app:
+        name: "dev Art Portfolio"
+
+      android:
+        applicationId: "org.gwc.art_portfolio_flutter.dev"
+
+      ios:
+        bundleId: "org.gwc.art-portfolio-flutter.dev"
+
+    prod:
+      app:
+        name: "Art Portfolio"
+
+      android:
+        applicationId: "org.gwc.art_portfolio_flutter.prod"
+      ios:
+        bundleId: "org.gwc.art-portfolio-flutter.prod"

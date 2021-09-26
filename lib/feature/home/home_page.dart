@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gwc_art_portfolio_flutter/feature/home/home_provider.dart';
+import 'package:gwc_art_portfolio_flutter/flavors.dart';
 import 'package:provider/provider.dart';
-
-import 'home_provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter app text'),
+        title: Text('Flutter app. Flavor is: ${F.appFlavor}'),
       ),
       body: Center(
         child: Column(
@@ -29,6 +29,7 @@ class HomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
         onPressed: provider.increment,
       ),
     );
