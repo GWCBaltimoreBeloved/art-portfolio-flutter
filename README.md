@@ -1,4 +1,4 @@
-# gwc_art_portfolio_flutter
+# art_portfolio_flutter
 
 A new Flutter project.
 

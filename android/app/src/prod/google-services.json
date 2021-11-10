@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "878129769453",
+    "project_id": "art-portfolio-flutter-prod",
+    "storage_bucket": "art-portfolio-flutter-prod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878129769453:android:6218b08a6d3a5a69c3d5e4",
+        "android_client_info": {
+          "package_name": "org.gwc.art_portfolio_flutter.prod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "878129769453-1s78q6f7dqoj19sejlog3prva8kv5cqh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxBRM4mkBo9a_6--1MZWDIxGmJtqOO82s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "878129769453-1s78q6f7dqoj19sejlog3prva8kv5cqh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "878129769453-ootfqmsbjaiuj98pg8rpq27qpfviigrf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.gwc.art-portfolio-flutter.prod"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

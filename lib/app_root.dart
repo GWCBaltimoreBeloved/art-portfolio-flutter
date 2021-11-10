@@ -1,6 +1,6 @@
+import 'package:art_portfolio_flutter/feature/home/home_page.dart';
+import 'package:art_portfolio_flutter/feature/home/home_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:gwc_art_portfolio_flutter/feature/home/home_page.dart';
-import 'package:gwc_art_portfolio_flutter/feature/home/home_provider.dart';
 import 'package:provider/provider.dart';
 
 class MyApp extends StatelessWidget {

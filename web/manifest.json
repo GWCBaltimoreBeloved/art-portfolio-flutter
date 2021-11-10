@@ -1,6 +1,6 @@
 {
-    "name": "gwc_art_portfolio_flutter",
-    "short_name": "gwc_art_portfolio_flutter",
+    "name": "art_portfolio_flutter",
+    "short_name": "art_portfolio_flutter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
