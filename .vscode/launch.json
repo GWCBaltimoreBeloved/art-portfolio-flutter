@@ -5,12 +5,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Flutter: Run all Tests",
-            "type": "dart",
-            "request": "launch",
-            "program": "./test/"
-        },
-        {
             "name": "dev",
             "request": "launch",
             "program": "lib/main-dev.dart",
@@ -21,14 +15,10 @@
             ]
         },
         {
-            "name": "prod",
-            "request": "launch",
-            "program": "lib/main-prod.dart",
+            "name": "Flutter: Run all Tests",
             "type": "dart",
-            "args": [
-                "--flavor",
-                "prod"
-            ]
+            "request": "launch",
+            "program": "./test/"
         },
     ]
 }
