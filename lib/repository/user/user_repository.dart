@@ -9,10 +9,12 @@ class UserRepository extends BaseRepository {
   static final UserRepository instance = UserRepository._();
   UserRepository._();
 
-  // final usersRef = BaseRepository.getReference<User>('users');
   final usersRef =
       FirebaseFirestore.instance.collection('users').withConverter<User>(
-            fromFirestore: (snapshot, _) => User.fromJson(snapshot.data()!),
+            fromFirestore: (snapshot, _) => User.fromJson(
+              snapshot.data()!,
+              snapshot.id,
+            ),
             toFirestore: (item, _) => item.toJson(),
           );
 
@@ -21,6 +23,12 @@ class UserRepository extends BaseRepository {
         .add(user)
         .then((value) => log("User Added"))
         .catchError((error) => log("Failed to add user: $error"));
+  }
+
+  Future<List<User>> getUsers() async {
+    final userSnapshots =
+        await usersRef.get().then((snapshot) => snapshot.docs);
+    return userSnapshots.map((e) => e.data()).toList();
   }
 }
 

@@ -1,5 +1,5 @@
-import 'package:art_portfolio_flutter/feature/home/home_page.dart';
-import 'package:art_portfolio_flutter/feature/home/home_provider.dart';
+import 'package:art_portfolio_flutter/pages/home/home_page.dart';
+import 'package:art_portfolio_flutter/pages/home/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

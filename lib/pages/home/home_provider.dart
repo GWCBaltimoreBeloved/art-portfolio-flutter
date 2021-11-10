@@ -4,10 +4,14 @@ import 'package:flutter/foundation.dart';
 
 class HomeProvider extends ChangeNotifier {
   int count = 0;
+  List<User>? users;
 
   void increment() {
     count++;
     notifyListeners();
+  }
+
+  void addUser() {
     UserRepository.instance.addUser(
       User(
         email: 'test',
@@ -15,5 +19,10 @@ class HomeProvider extends ChangeNotifier {
         lastName: 'test',
       ),
     );
+  }
+
+  Future<void> getUsers() async {
+    users = await UserRepository.instance.getUsers();
+    notifyListeners();
   }
 }

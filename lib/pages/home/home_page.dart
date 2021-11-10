@@ -1,5 +1,5 @@
-import 'package:art_portfolio_flutter/feature/home/home_provider.dart';
 import 'package:art_portfolio_flutter/flavors.dart';
+import 'package:art_portfolio_flutter/pages/home/home_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -25,12 +25,38 @@ class HomePage extends StatelessWidget {
             Text(
               'You have pressed the button ${provider.count} times',
             ),
+            ElevatedButton(
+              onPressed: provider.addUser,
+              child: const Text('Add User'),
+            ),
+            ElevatedButton(
+              onPressed: provider.getUsers,
+              child: const Text('Get Users'),
+            ),
+            const SizedBox(height: 24),
+            const _UsersList(),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: provider.increment,
+      ),
+    );
+  }
+}
+
+class _UsersList extends StatelessWidget {
+  const _UsersList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final provider = context.watch<HomeProvider>();
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: provider.users?.length ?? 0,
+      itemBuilder: (context, index) => Center(
+        child: Text(provider.users?[index].firstName ?? ''),
       ),
     );
   }
