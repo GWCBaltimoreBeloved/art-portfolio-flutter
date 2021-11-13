@@ -27,6 +27,10 @@ class HomePage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: provider.addUser,
+              child: const Icon(Icons.add),
+            ),
+            ElevatedButton(
+              onPressed: provider.addUser,
               child: const Text('Add User'),
             ),
             ElevatedButton(

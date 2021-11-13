@@ -15,7 +15,7 @@ class HomeProvider extends ChangeNotifier {
     UserRepository.instance.addUser(
       User(
         email: 'test',
-        firstName: 'test',
+        firstName: 'Sydney',
         lastName: 'test',
       ),
     );
