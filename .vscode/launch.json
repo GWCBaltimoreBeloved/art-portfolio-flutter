@@ -15,6 +15,17 @@
             ]
         },
         {
+            "name": "dev-release",
+            "request": "launch",
+            "program": "lib/main-dev.dart",
+            "type": "dart",
+            "args": [
+                "--release",
+                "--flavor",
+                "dev"
+            ]
+        },
+        {
             "name": "Flutter: Run all Tests",
             "type": "dart",
             "request": "launch",
