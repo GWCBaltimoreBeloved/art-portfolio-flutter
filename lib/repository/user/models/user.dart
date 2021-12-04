@@ -12,23 +12,31 @@ class User {
   late final String id;
   final String firstName;
   final String lastName;
-  final String email;
+  final String description;
+  final String instagram;
+  final String github;
 
   User({
     required this.firstName,
     required this.lastName,
-    required this.email,
+    required this.description,
+    required this.instagram,
+    required this.github,
   });
 
   User copyWith({
     String? firstName,
     String? lastName,
-    String? email,
+    String? description,
+    String? instagram,
+    String? github,
   }) {
     return User(
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
-      email: email ?? this.email,
+      description: description ?? this.description,
+      instagram: instagram ?? this.instagram,
+      github: github ?? this.github,
     );
   }
 }

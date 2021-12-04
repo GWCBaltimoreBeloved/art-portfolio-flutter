@@ -1,4 +1,3 @@
-import 'package:art_portfolio_flutter/pages/artist_list/artist_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,8 +18,6 @@ class _PageBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final provider = ref.watch(artistListProvider);
-
     return ListView(
       padding: EdgeInsets.only(
         left: 24,

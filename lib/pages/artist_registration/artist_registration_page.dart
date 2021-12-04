@@ -17,6 +17,8 @@ class ArtistRegistrationPage extends ConsumerWidget {
           SizedBox(height: 24),
           _FirstNameInput(),
           SizedBox(height: 24),
+          _LastNameInput(),
+          SizedBox(height: 24),
           _SubmitButton(),
           SizedBox(height: 24),
         ],
@@ -48,6 +50,21 @@ class _FirstNameInput extends ConsumerWidget {
       label: 'First Name',
       hintText: 'Sydney',
       onChanged: (value) => provider.setFirstName(value),
+    );
+  }
+}
+
+class _LastNameInput extends ConsumerWidget {
+  const _LastNameInput({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final provider = ref.watch(registrationProvider);
+
+    return FormTextInput(
+      label: 'Last Name',
+      hintText: 'Feliz',
+      onChanged: (value) => provider.setLastName(value),
     );
   }
 }

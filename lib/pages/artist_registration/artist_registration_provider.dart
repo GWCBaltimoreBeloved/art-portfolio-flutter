@@ -12,11 +12,17 @@ class ArtistRegistrationProvider extends ChangeNotifier {
   User _newUser = User(
     firstName: '',
     lastName: '',
-    email: '',
+    description: '',
+    github: '',
+    instagram: '',
   );
 
   void setFirstName(String value) {
     _newUser = _newUser.copyWith(firstName: value);
+  }
+
+  void setLastName(String value) {
+    _newUser = _newUser.copyWith(lastName: value);
   }
 
   Future<void> submit() async {
