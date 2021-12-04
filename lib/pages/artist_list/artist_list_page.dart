@@ -47,6 +47,19 @@ class _ArtistListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text(user.firstName));
+    return Center(
+        child: Row(
+      children: [
+        Text(user.firstName),
+        SizedBox(width: 12),
+        Text(user.lastName),
+        SizedBox(width: 12),
+        Text(user.description),
+        SizedBox(width: 12),
+        Text(user.instagram),
+        SizedBox(width: 12),
+        Text(user.github),
+      ],
+    ));
   }
 }
