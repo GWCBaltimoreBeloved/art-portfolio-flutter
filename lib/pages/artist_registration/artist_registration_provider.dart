@@ -4,11 +4,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final registrationProvider =
-    ChangeNotifierProvider.autoDispose<RegistrationProvider>((_) {
-  return RegistrationProvider();
+    ChangeNotifierProvider.autoDispose<ArtistRegistrationProvider>((_) {
+  return ArtistRegistrationProvider();
 });
 
-class RegistrationProvider extends ChangeNotifier {
+class ArtistRegistrationProvider extends ChangeNotifier {
   User _newUser = User(
     firstName: '',
     lastName: '',

@@ -1,6 +1,7 @@
 import 'package:art_portfolio_flutter/flavors.dart';
 import 'package:art_portfolio_flutter/pages/artist_list/artist_list_page.dart';
-import 'package:art_portfolio_flutter/pages/registration/registration_page.dart';
+import 'package:art_portfolio_flutter/pages/artist_registration/artist_registration_page.dart';
+import 'package:art_portfolio_flutter/pages/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -18,11 +19,20 @@ class DeveloperPage extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             ElevatedButton(
-              child: Text('Registration Page'),
+              child: Text('Login Page'),
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => RegistrationPage(),
+                  builder: (_) => LoginPage(),
+                ),
+              ),
+            ),
+            ElevatedButton(
+              child: Text('Artist Registration Page'),
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => ArtistRegistrationPage(),
                 ),
               ),
             ),

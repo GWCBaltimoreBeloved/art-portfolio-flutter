@@ -1,10 +1,10 @@
 import 'package:art_portfolio_flutter/common/form_text_input.dart';
-import 'package:art_portfolio_flutter/pages/registration/registration_provider.dart';
+import 'package:art_portfolio_flutter/pages/artist_registration/artist_registration_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class RegistrationPage extends ConsumerWidget {
-  const RegistrationPage({Key? key}) : super(key: key);
+class ArtistRegistrationPage extends ConsumerWidget {
+  const ArtistRegistrationPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
