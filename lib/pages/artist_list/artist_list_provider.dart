@@ -3,27 +3,16 @@ import 'package:art_portfolio_flutter/repository/user/user_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final homeProvider = ChangeNotifierProvider.autoDispose<HomeProvider>((_) {
-  return HomeProvider();
+final artistListProvider =
+    ChangeNotifierProvider.autoDispose<ArtistListProvider>((_) {
+  return ArtistListProvider();
 });
 
-class HomeProvider extends ChangeNotifier {
-  int count = 0;
+class ArtistListProvider extends ChangeNotifier {
   List<User>? users;
 
-  void increment() {
-    count++;
-    notifyListeners();
-  }
-
-  void addUser() {
-    UserRepository.instance.addUser(
-      User(
-        email: 'test',
-        firstName: 'Sydney',
-        lastName: 'test',
-      ),
-    );
+  ArtistListProvider() {
+    getUsers();
   }
 
   Future<void> getUsers() async {

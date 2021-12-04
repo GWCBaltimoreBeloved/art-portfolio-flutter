@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class BaseRepository {
   static T _getModel<T extends BaseModel>(Map<String, dynamic> map, T) {
-    //TODO will probably need to pass an ID in here
+    // If we can get this to work we'll probably need to pass an ID in here
     return T()..fromJson();
   }
 

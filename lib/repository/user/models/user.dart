@@ -19,4 +19,16 @@ class User {
     required this.lastName,
     required this.email,
   });
+
+  User copyWith({
+    String? firstName,
+    String? lastName,
+    String? email,
+  }) {
+    return User(
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      email: email ?? this.email,
+    );
+  }
 }
