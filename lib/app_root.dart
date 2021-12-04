@@ -1,14 +1,13 @@
 import 'package:art_portfolio_flutter/pages/home/home_page.dart';
-import 'package:art_portfolio_flutter/pages/home/home_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const _ProviderWrapper(
+    return const ProviderScope(
       child: _MyApp(),
     );
   }
@@ -25,21 +24,6 @@ class _MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const HomePage(),
-    );
-  }
-}
-
-class _ProviderWrapper extends StatelessWidget {
-  final Widget child;
-  const _ProviderWrapper({required this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => HomeProvider()),
-      ],
-      child: child,
     );
   }
 }

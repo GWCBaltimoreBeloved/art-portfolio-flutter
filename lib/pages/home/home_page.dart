@@ -1,14 +1,14 @@
 import 'package:art_portfolio_flutter/flavors.dart';
 import 'package:art_portfolio_flutter/pages/home/home_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final provider = Provider.of<HomeProvider>(context);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final provider = ref.watch(homeProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             Text(
-              'You have pressed the button ${provider.count} times',
+              'You have hit the button ${provider.count} times',
             ),
             ElevatedButton(
               onPressed: provider.addUser,
@@ -50,12 +50,13 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class _UsersList extends StatelessWidget {
+class _UsersList extends ConsumerWidget {
   const _UsersList({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final provider = context.watch<HomeProvider>();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final provider = ref.watch(homeProvider);
+
     return ListView.builder(
       shrinkWrap: true,
       itemCount: provider.users?.length ?? 0,
