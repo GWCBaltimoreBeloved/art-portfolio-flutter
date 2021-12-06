@@ -1,4 +1,4 @@
-import 'package:art_portfolio_flutter/pages/developer/developer_page.dart';
+import 'package:art_portfolio_flutter/my_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,7 +21,9 @@ class _MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final mainBackgroundColor = Color(0xFFE1F5FF);
 
-    return MaterialApp(
+    return MaterialApp.router(
+      routeInformationParser: MyRouter.goRouter.routeInformationParser,
+      routerDelegate: MyRouter.goRouter.routerDelegate,
       title: 'Flutter Hello World',
       theme: ThemeData(
         primarySwatch: Colors.red,
@@ -38,7 +40,6 @@ class _MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const DeveloperPage(),
     );
   }
 }

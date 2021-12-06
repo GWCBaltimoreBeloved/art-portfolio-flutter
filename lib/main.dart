@@ -1,4 +1,4 @@
-import 'package:art_portfolio_flutter/app_root.dart';
+import 'package:art_portfolio_flutter/my_app.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 

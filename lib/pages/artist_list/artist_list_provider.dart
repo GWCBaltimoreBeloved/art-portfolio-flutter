@@ -3,8 +3,7 @@ import 'package:art_portfolio_flutter/repository/user/user_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final artistListProvider =
-    ChangeNotifierProvider.autoDispose<ArtistListProvider>((_) {
+final artistListProvider = ChangeNotifierProvider.autoDispose((_) {
   return ArtistListProvider();
 });
 

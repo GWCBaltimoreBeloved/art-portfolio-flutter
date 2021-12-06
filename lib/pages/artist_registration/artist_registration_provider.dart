@@ -3,8 +3,7 @@ import 'package:art_portfolio_flutter/repository/user/user_repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final registrationProvider =
-    ChangeNotifierProvider.autoDispose<ArtistRegistrationProvider>((_) {
+final registrationProvider = ChangeNotifierProvider.autoDispose((_) {
   return ArtistRegistrationProvider();
 });
 

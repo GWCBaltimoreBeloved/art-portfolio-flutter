@@ -1,9 +1,8 @@
 import 'package:art_portfolio_flutter/flavors.dart';
-import 'package:art_portfolio_flutter/pages/artist_list/artist_list_page.dart';
-import 'package:art_portfolio_flutter/pages/artist_registration/artist_registration_page.dart';
-import 'package:art_portfolio_flutter/pages/login/login_page.dart';
+import 'package:art_portfolio_flutter/my_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class DeveloperPage extends ConsumerWidget {
   const DeveloperPage({Key? key}) : super(key: key);
@@ -20,29 +19,20 @@ class DeveloperPage extends ConsumerWidget {
           children: [
             ElevatedButton(
               child: Text('Login Page'),
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => LoginPage(),
-                ),
+              onPressed: () => GoRouter.of(context).push(
+                MyRouter.routes.login,
               ),
             ),
             ElevatedButton(
               child: Text('Artist Registration Page'),
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => ArtistRegistrationPage(),
-                ),
+              onPressed: () => GoRouter.of(context).push(
+                MyRouter.routes.artistRegistration,
               ),
             ),
             ElevatedButton(
               child: Text('Artist List Page'),
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => ArtistListPage(),
-                ),
+              onPressed: () => GoRouter.of(context).push(
+                MyRouter.routes.artistList,
               ),
             ),
           ],
