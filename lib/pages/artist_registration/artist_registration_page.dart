@@ -100,9 +100,9 @@ class _SubmitButton extends ConsumerWidget {
       onPressed: () async {
         final user = await provider.submit();
         if (user == null) {
-          GoRouter.of(context).pop(context);
-        } else {
           showErrorSnackbar(context);
+        } else {
+          GoRouter.of(context).pop(context);
         }
       },
     );

@@ -1,10 +1,9 @@
 import 'dart:developer';
 
-import 'package:art_portfolio_flutter/repository/base_repository.dart';
 import 'package:art_portfolio_flutter/repository/user/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class UserRepository extends BaseRepository {
+class UserRepository {
   factory UserRepository() => instance;
   static final UserRepository instance = UserRepository._();
   UserRepository._();
