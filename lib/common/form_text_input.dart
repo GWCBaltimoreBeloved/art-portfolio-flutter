@@ -4,13 +4,19 @@ class FormTextInput extends StatelessWidget {
   final String label;
   final String hintText;
   final int minLines;
+  final bool obscureText;
+  final Widget? suffixIcon;
+  final String? Function(String?)? validator;
   final Function(String value) onChanged;
 
   const FormTextInput({
     required this.label,
     required this.hintText,
-    this.minLines = 1,
     required this.onChanged,
+    this.obscureText = false,
+    this.validator,
+    this.suffixIcon,
+    this.minLines = 1,
     Key? key,
   }) : super(key: key);
 
@@ -30,14 +36,18 @@ class FormTextInput extends StatelessWidget {
           ),
         ),
         SizedBox(height: 8),
-        TextField(
+        TextFormField(
           onChanged: onChanged,
-          minLines: minLines,
-          maxLines: 10,
+          minLines: obscureText ? null : minLines,
+          maxLines: obscureText ? 1 : 10,
+          validator: validator,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          obscureText: obscureText,
           decoration: InputDecoration(
             hintText: hintText,
             filled: true,
             fillColor: Colors.white,
+            suffixIcon: suffixIcon,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
             ),

@@ -1,3 +1,4 @@
+import 'package:art_portfolio_flutter/common/show_loading_dialog.dart';
 import 'package:art_portfolio_flutter/flavors.dart';
 import 'package:art_portfolio_flutter/my_router.dart';
 import 'package:flutter/material.dart';
@@ -23,24 +24,45 @@ class DeveloperPage extends ConsumerWidget {
                 MyRouter.routes.login,
               ),
             ),
+            SizedBox(height: 8),
             ElevatedButton(
               child: Text('Artist Registration Page'),
               onPressed: () => GoRouter.of(context).push(
                 MyRouter.routes.artistRegistration,
               ),
             ),
+            SizedBox(height: 8),
             ElevatedButton(
               child: Text('Artist List Page'),
               onPressed: () => GoRouter.of(context).push(
                 MyRouter.routes.artistList,
               ),
             ),
+            SizedBox(height: 8),
             ElevatedButton(
               child: Text('Art List Page'),
               onPressed: () => GoRouter.of(context).push(
                 MyRouter.routes.artList,
               ),
             ),
+            SizedBox(height: 8),
+            ElevatedButton(
+              child: Text('Email Verification Page'),
+              onPressed: () => GoRouter.of(context).push(
+                MyRouter.routes.emailVerification,
+              ),
+            ),
+            SizedBox(height: 8),
+            ElevatedButton(
+                child: Text('Show loading dialog'),
+                onPressed: () async {
+                  final closeDialog = showLoadingDialog(
+                    context: context,
+                    text: "text",
+                  );
+                  await Future.delayed(Duration(seconds: 3));
+                  closeDialog();
+                }),
           ],
         ),
       ),

@@ -1,6 +1,5 @@
 import 'package:art_portfolio_flutter/my_router.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MyApp extends StatelessWidget {
@@ -26,7 +25,7 @@ class _MyApp extends StatelessWidget {
       routerDelegate: MyRouter.goRouter.routerDelegate,
       title: 'Flutter Hello World',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.pink,
         scaffoldBackgroundColor: mainBackgroundColor,
         appBarTheme: AppBarTheme(
           elevation: 0,

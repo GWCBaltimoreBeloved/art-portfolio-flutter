@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
-void showErrorSnackbar(BuildContext context) {
+void showErrorSnackbar(
+  BuildContext context, {
+  String message = "Error - Please try again",
+}) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    content: Text("Error - Please try again"),
+    content: Text(message),
   ));
 }

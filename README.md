@@ -1,6 +1,11 @@
 # art_portfolio_flutter
 
-A new Flutter project.
+
+
+## Resources
+Miro Board - https://miro.com/app/board/o9J_lwb8XCI=/
+
+Miro Board Invite Link - https://miro.com/welcomeonboard/UUprMEZuZlVSSlkzN3V6VnpVa0xwOU8zdXRuSUw1MXhXeFc1MkttSmtSQVp0eVJ1UkQ2Tm1ndUhpcHAweFhOMnwzMDc0NDU3MzYxMTEwNDY0OTg5?invite_link_id=621198525970
 
 ## Getting Started
 
@@ -16,5 +21,10 @@ https://git-scm.com/downloads
         ```
         git clone https://github.com/GWCBaltimoreBeloved/art-portfolio-flutter.git
         ```
+5. Download the latest packages
+    ```
+    flutter pub get
+    ```
+    
 
 You are now ready to begin contributiong! Head over to the CONTRIBUTING.md to see how to contribute.
