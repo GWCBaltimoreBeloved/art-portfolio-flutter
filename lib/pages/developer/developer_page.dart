@@ -35,6 +35,12 @@ class DeveloperPage extends ConsumerWidget {
                 MyRouter.routes.artistList,
               ),
             ),
+            ElevatedButton(
+              child: Text('Art List Page'),
+              onPressed: () => GoRouter.of(context).push(
+                MyRouter.routes.artList,
+              ),
+            ),
           ],
         ),
       ),

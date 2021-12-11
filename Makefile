@@ -1,3 +1,6 @@
+build:
+	flutter pub run build_runner build --delete-conflicting-outputs
+
 pod_update:
 	cd ios && pod update && flutter clean && flutter pub get
 

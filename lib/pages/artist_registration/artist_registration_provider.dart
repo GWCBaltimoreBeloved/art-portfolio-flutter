@@ -28,8 +28,8 @@ class ArtistRegistrationProvider extends ChangeNotifier {
     _newUser = _newUser.copyWith(description: value);
   }
 
-  Future<void> submit() async {
-    UserRepository.instance.addUser(
+  Future<User?> submit() async {
+    return UserRepository.instance.addUser(
       _newUser,
     );
   }

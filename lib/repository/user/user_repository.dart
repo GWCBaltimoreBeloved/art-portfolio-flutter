@@ -18,23 +18,23 @@ class UserRepository extends BaseRepository {
             toFirestore: (item, _) => item.toJson(),
           );
 
-  Future<void> addUser(User user) async {
-    return usersRef
-        .add(user)
-        .then((value) => log("User Added"))
-        .catchError((error) => log("Failed to add user: $error"));
+  Future<User?> addUser(User user) async {
+    try {
+      final response = await usersRef.add(user);
+      log("User Added Successfully");
+      final data = response.get().then((value) => value.data());
+      return data;
+    } catch (e) {
+      log("Error - Failed to add user with error: $e");
+    }
   }
 
-  Future<List<User>> getUsers() async {
-    final userSnapshots =
-        await usersRef.get().then((snapshot) => snapshot.docs);
-    return userSnapshots.map((e) => e.data()).toList();
+  Future<List<User>?> getUsers() async {
+    try {
+      final snapshots = await usersRef.get();
+      return snapshots.docs.map((e) => e.data()).toList();
+    } catch (e) {
+      log('error getting users: $e');
+    }
   }
-}
-
-class ApiResponse<T> {
-  final T? value;
-  final String? error;
-
-  ApiResponse(this.value, this.error);
 }

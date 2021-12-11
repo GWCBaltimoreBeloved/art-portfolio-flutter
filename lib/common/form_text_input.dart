@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class FormTextInput extends StatelessWidget {
   final String label;
   final String hintText;
+  final int minLines;
   final Function(String value) onChanged;
 
   const FormTextInput({
     required this.label,
     required this.hintText,
+    this.minLines = 1,
     required this.onChanged,
     Key? key,
   }) : super(key: key);
@@ -29,6 +31,9 @@ class FormTextInput extends StatelessWidget {
         ),
         SizedBox(height: 8),
         TextField(
+          onChanged: onChanged,
+          minLines: minLines,
+          maxLines: 10,
           decoration: InputDecoration(
             hintText: hintText,
             filled: true,
@@ -37,7 +42,6 @@ class FormTextInput extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             ),
           ),
-          onChanged: onChanged,
         ),
       ],
     );

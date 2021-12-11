@@ -1,7 +1,9 @@
+import 'package:art_portfolio_flutter/common/error_snackbar.dart';
 import 'package:art_portfolio_flutter/common/form_text_input.dart';
 import 'package:art_portfolio_flutter/pages/artist_registration/artist_registration_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class ArtistRegistrationPage extends ConsumerWidget {
   const ArtistRegistrationPage({Key? key}) : super(key: key);
@@ -95,7 +97,14 @@ class _SubmitButton extends ConsumerWidget {
 
     return ElevatedButton(
       child: Text('Submit'),
-      onPressed: () => provider.submit(),
+      onPressed: () async {
+        final user = await provider.submit();
+        if (user == null) {
+          GoRouter.of(context).pop(context);
+        } else {
+          showErrorSnackbar(context);
+        }
+      },
     );
   }
 }
