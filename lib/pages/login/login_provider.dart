@@ -9,8 +9,8 @@ final loginProvider = ChangeNotifierProvider.autoDispose((_) {
 });
 
 class LoginProvider extends ChangeNotifier {
-  String _email = "";
-  String _password = "";
+  String _email = '';
+  String _password = '';
   bool isPasswordVisible = false;
 
   void setEmail(String value) {
@@ -45,8 +45,8 @@ class LoginProvider extends ChangeNotifier {
         return 'The account already exists for that email.';
       }
     } catch (e) {
-      log("Authentication error: $e");
-      return "Unknown Error";
+      log('Authentication error: $e');
+      return 'Unknown Error';
     }
   }
 }

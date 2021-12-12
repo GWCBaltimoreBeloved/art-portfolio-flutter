@@ -1,5 +1,5 @@
-import 'package:art_portfolio_flutter/repository/user/models/user.dart';
-import 'package:art_portfolio_flutter/repository/user/user_repository.dart';
+import 'package:art_portfolio_flutter/repository/artist/models/artist.dart';
+import 'package:art_portfolio_flutter/repository/repositories.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -8,7 +8,7 @@ final registrationProvider = ChangeNotifierProvider.autoDispose((_) {
 });
 
 class ArtistRegistrationProvider extends ChangeNotifier {
-  User _newUser = User(
+  Artist _newArtist = Artist(
     firstName: '',
     lastName: '',
     description: '',
@@ -17,20 +17,20 @@ class ArtistRegistrationProvider extends ChangeNotifier {
   );
 
   void setFirstName(String value) {
-    _newUser = _newUser.copyWith(firstName: value);
+    _newArtist = _newArtist.copyWith(firstName: value);
   }
 
   void setLastName(String value) {
-    _newUser = _newUser.copyWith(lastName: value);
+    _newArtist = _newArtist.copyWith(lastName: value);
   }
 
   void setDescription(String value) {
-    _newUser = _newUser.copyWith(description: value);
+    _newArtist = _newArtist.copyWith(description: value);
   }
 
-  Future<User?> submit() async {
-    return UserRepository.instance.addUser(
-      _newUser,
+  Future<Artist?> submit() async {
+    return Repositories.instance.artistRepository.addItem(
+      _newArtist,
     );
   }
 }

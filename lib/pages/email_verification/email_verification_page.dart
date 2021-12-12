@@ -41,11 +41,11 @@ class _PageBody extends ConsumerWidget {
       children: [
         SizedBox(height: 24),
         Text(
-          "An email has been sent to the address provided. Please click on the verification link.",
+          'An email has been sent to the address provided. Please click on the verification link.',
         ),
         TextButton(
           onPressed: provider.resendEmail,
-          child: Text("Re-send verification email"),
+          child: Text('Re-send verification email'),
         ),
         SizedBox(height: 24),
       ],

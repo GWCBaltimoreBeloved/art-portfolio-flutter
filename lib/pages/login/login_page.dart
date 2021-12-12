@@ -69,7 +69,7 @@ class _EmailInput extends ConsumerWidget {
       hintText: 'myEmail@gmail.com',
       validator: (value) {
         if (value?.isEmpty == true) {
-          return "must not be empty";
+          return 'must not be empty';
         }
       },
       onChanged: (value) => provider.setEmail(value),
@@ -97,7 +97,7 @@ class _PasswordInput extends ConsumerWidget {
       onChanged: (value) => provider.setPassword(value),
       validator: (value) {
         if (value?.isEmpty == true) {
-          return "must not be empty";
+          return 'must not be empty';
         }
       },
     );

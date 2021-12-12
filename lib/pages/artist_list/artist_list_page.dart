@@ -1,5 +1,5 @@
 import 'package:art_portfolio_flutter/pages/artist_list/artist_list_provider.dart';
-import 'package:art_portfolio_flutter/repository/user/models/user.dart';
+import 'package:art_portfolio_flutter/repository/artist/models/artist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -28,37 +28,43 @@ class _ArtistList extends ConsumerWidget {
 
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: provider.users?.length ?? 0,
+      itemCount: provider.artists?.length ?? 0,
       itemBuilder: (context, index) {
-        final user = provider.users?[index];
-        if (user == null) {
+        final artist = provider.artists?[index];
+        if (artist == null) {
           return SizedBox.shrink();
         }
 
-        return _ArtistListItem(user);
+        return _ArtistListItem(artist);
       },
     );
   }
 }
 
-class _ArtistListItem extends StatelessWidget {
-  final User user;
-  const _ArtistListItem(this.user, {Key? key}) : super(key: key);
+class _ArtistListItem extends ConsumerWidget {
+  final Artist artist;
+  const _ArtistListItem(this.artist, {Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Center(
         child: Row(
       children: [
-        Text(user.firstName),
+        Text(artist.firstName),
         SizedBox(width: 12),
-        Text(user.lastName),
+        Text(artist.lastName),
         SizedBox(width: 12),
-        Text(user.description),
+        Text(artist.description),
         SizedBox(width: 12),
-        Text(user.instagram),
+        Text(artist.instagram),
         SizedBox(width: 12),
-        Text(user.github),
+        Text(artist.github),
+        Spacer(),
+        IconButton(
+            onPressed: () => ref
+                .read(artistListProvider)
+                .deleteArtist(id: artist.documentId),
+            icon: Icon(Icons.clear))
       ],
     ));
   }

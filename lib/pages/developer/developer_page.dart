@@ -58,7 +58,7 @@ class DeveloperPage extends ConsumerWidget {
                 onPressed: () async {
                   final closeDialog = showLoadingDialog(
                     context: context,
-                    text: "text",
+                    text: 'text',
                   );
                   await Future.delayed(Duration(seconds: 3));
                   closeDialog();
