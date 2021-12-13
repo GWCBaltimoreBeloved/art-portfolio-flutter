@@ -4,11 +4,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final loginProvider = ChangeNotifierProvider.autoDispose((_) {
-  return LoginProvider();
+final createAccountProvider = ChangeNotifierProvider.autoDispose((_) {
+  return CreateAccountProvider();
 });
 
-class LoginProvider extends ChangeNotifier {
+class CreateAccountProvider extends ChangeNotifier {
   String _email = '';
   String _password = '';
   bool isPasswordVisible = false;
@@ -28,12 +28,23 @@ class LoginProvider extends ChangeNotifier {
 
   Future<String?> submit() async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      final userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _email,
         password: _password,
       );
+
+      User? user = userCredential.user;
+
+      if (user != null && !user.emailVerified) {
+        await user.sendEmailVerification();
+      }
     } on FirebaseAuthException catch (e) {
-      return e.code;
+      if (e.code == 'weak-password') {
+        return 'The password provided is too weak.';
+      } else if (e.code == 'email-already-in-use') {
+        return 'The account already exists for that email.';
+      }
     } catch (e) {
       log('Authentication error: $e');
       return 'Unknown Error';

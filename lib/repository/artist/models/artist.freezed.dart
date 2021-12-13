@@ -23,6 +23,7 @@ class _$ArtistTearOff {
 
   _Artist call(
       {String documentId = '',
+      required String userId,
       required String firstName,
       required String lastName,
       required String description,
@@ -30,6 +31,7 @@ class _$ArtistTearOff {
       required String github}) {
     return _Artist(
       documentId: documentId,
+      userId: userId,
       firstName: firstName,
       lastName: lastName,
       description: description,
@@ -49,6 +51,7 @@ const $Artist = _$ArtistTearOff();
 /// @nodoc
 mixin _$Artist {
   String get documentId => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -66,6 +69,7 @@ abstract class $ArtistCopyWith<$Res> {
       _$ArtistCopyWithImpl<$Res>;
   $Res call(
       {String documentId,
+      String userId,
       String firstName,
       String lastName,
       String description,
@@ -84,6 +88,7 @@ class _$ArtistCopyWithImpl<$Res> implements $ArtistCopyWith<$Res> {
   @override
   $Res call({
     Object? documentId = freezed,
+    Object? userId = freezed,
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? description = freezed,
@@ -94,6 +99,10 @@ class _$ArtistCopyWithImpl<$Res> implements $ArtistCopyWith<$Res> {
       documentId: documentId == freezed
           ? _value.documentId
           : documentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: userId == freezed
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String,
       firstName: firstName == freezed
           ? _value.firstName
@@ -126,6 +135,7 @@ abstract class _$ArtistCopyWith<$Res> implements $ArtistCopyWith<$Res> {
   @override
   $Res call(
       {String documentId,
+      String userId,
       String firstName,
       String lastName,
       String description,
@@ -145,6 +155,7 @@ class __$ArtistCopyWithImpl<$Res> extends _$ArtistCopyWithImpl<$Res>
   @override
   $Res call({
     Object? documentId = freezed,
+    Object? userId = freezed,
     Object? firstName = freezed,
     Object? lastName = freezed,
     Object? description = freezed,
@@ -155,6 +166,10 @@ class __$ArtistCopyWithImpl<$Res> extends _$ArtistCopyWithImpl<$Res>
       documentId: documentId == freezed
           ? _value.documentId
           : documentId // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: userId == freezed
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String,
       firstName: firstName == freezed
           ? _value.firstName
@@ -185,6 +200,7 @@ class __$ArtistCopyWithImpl<$Res> extends _$ArtistCopyWithImpl<$Res>
 class _$_Artist implements _Artist {
   _$_Artist(
       {this.documentId = '',
+      required this.userId,
       required this.firstName,
       required this.lastName,
       required this.description,
@@ -198,6 +214,8 @@ class _$_Artist implements _Artist {
   @override
   final String documentId;
   @override
+  final String userId;
+  @override
   final String firstName;
   @override
   final String lastName;
@@ -210,7 +228,7 @@ class _$_Artist implements _Artist {
 
   @override
   String toString() {
-    return 'Artist(documentId: $documentId, firstName: $firstName, lastName: $lastName, description: $description, instagram: $instagram, github: $github)';
+    return 'Artist(documentId: $documentId, userId: $userId, firstName: $firstName, lastName: $lastName, description: $description, instagram: $instagram, github: $github)';
   }
 
   @override
@@ -220,6 +238,7 @@ class _$_Artist implements _Artist {
             other is _Artist &&
             const DeepCollectionEquality()
                 .equals(other.documentId, documentId) &&
+            const DeepCollectionEquality().equals(other.userId, userId) &&
             const DeepCollectionEquality().equals(other.firstName, firstName) &&
             const DeepCollectionEquality().equals(other.lastName, lastName) &&
             const DeepCollectionEquality()
@@ -232,6 +251,7 @@ class _$_Artist implements _Artist {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(documentId),
+      const DeepCollectionEquality().hash(userId),
       const DeepCollectionEquality().hash(firstName),
       const DeepCollectionEquality().hash(lastName),
       const DeepCollectionEquality().hash(description),
@@ -252,6 +272,7 @@ class _$_Artist implements _Artist {
 abstract class _Artist implements Artist {
   factory _Artist(
       {String documentId,
+      required String userId,
       required String firstName,
       required String lastName,
       required String description,
@@ -262,6 +283,8 @@ abstract class _Artist implements Artist {
 
   @override
   String get documentId;
+  @override
+  String get userId;
   @override
   String get firstName;
   @override

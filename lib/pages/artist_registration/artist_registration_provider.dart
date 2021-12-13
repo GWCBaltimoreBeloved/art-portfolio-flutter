@@ -1,5 +1,6 @@
 import 'package:art_portfolio_flutter/repository/artist/models/artist.dart';
 import 'package:art_portfolio_flutter/repository/repositories.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -9,6 +10,7 @@ final registrationProvider = ChangeNotifierProvider.autoDispose((_) {
 
 class ArtistRegistrationProvider extends ChangeNotifier {
   Artist _newArtist = Artist(
+    userId: '',
     firstName: '',
     lastName: '',
     description: '',
@@ -28,9 +30,22 @@ class ArtistRegistrationProvider extends ChangeNotifier {
     _newArtist = _newArtist.copyWith(description: value);
   }
 
-  Future<Artist?> submit() async {
-    return Repositories.instance.artistRepository.addItem(
+  Future<String?> submit() async {
+    User? user = FirebaseAuth.instance.currentUser ??
+        await FirebaseAuth.instance.authStateChanges().first;
+
+    if (user == null) {
+      return 'You must be logged in before registering as an artist';
+    }
+
+    _newArtist = _newArtist.copyWith(userId: user.uid);
+
+    final artist = await Repositories.instance.artistRepository.addItem(
       _newArtist,
     );
+
+    if (artist == null) {
+      return 'Error creating Artist';
+    }
   }
 }

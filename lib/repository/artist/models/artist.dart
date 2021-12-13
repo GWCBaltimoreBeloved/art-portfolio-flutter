@@ -7,6 +7,7 @@ part 'artist.g.dart';
 class Artist with _$Artist {
   factory Artist({
     @Default('') final String documentId,
+    required final String userId,
     required final String firstName,
     required final String lastName,
     required final String description,

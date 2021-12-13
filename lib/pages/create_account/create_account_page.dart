@@ -1,13 +1,13 @@
 import 'package:art_portfolio_flutter/common/error_snackbar.dart';
 import 'package:art_portfolio_flutter/common/form_text_input.dart';
 import 'package:art_portfolio_flutter/my_router.dart';
-import 'package:art_portfolio_flutter/pages/login/login_provider.dart';
+import 'package:art_portfolio_flutter/pages/create_account/create_account_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginPage extends ConsumerWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class CreateAccountPage extends ConsumerWidget {
+  const CreateAccountPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -39,8 +39,6 @@ class _PageBody extends ConsumerWidget {
           _PasswordInput(),
           SizedBox(height: 24),
           _SubmitButton(),
-          SizedBox(height: 24),
-          _DeveloperSubmitButton(),
         ],
       ),
     );
@@ -53,7 +51,7 @@ class _PageHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Login',
+      'Create Account',
       style: TextStyle(fontSize: 36),
     );
   }
@@ -64,14 +62,20 @@ class _EmailInput extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final provider = ref.watch(loginProvider);
+    final provider = ref.watch(createAccountProvider);
 
     return FormTextInput(
       label: 'Email',
       hintText: 'myEmail@gmail.com',
       validator: (value) {
-        if (value?.isEmpty == true) {
-          return 'must not be empty';
+        value = value?.trim() ?? '';
+        if (value.trim().isEmpty) {
+          return 'Must not be empty';
+        } else if (!value.contains(
+          RegExp(
+              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+"),
+        )) {
+          return 'Invalid email address';
         }
       },
       onChanged: (value) => provider.setEmail(value),
@@ -84,7 +88,7 @@ class _PasswordInput extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final provider = ref.watch(loginProvider);
+    final provider = ref.watch(createAccountProvider);
 
     return FormTextInput(
       label: 'Password',
@@ -111,7 +115,7 @@ class _SubmitButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final provider = ref.watch(loginProvider);
+    final provider = ref.watch(createAccountProvider);
 
     return ElevatedButton(
       child: Text('Submit'),
@@ -125,36 +129,7 @@ class _SubmitButton extends ConsumerWidget {
         final error = await provider.submit();
         if (error == null) {
           GoRouter.of(context).push(
-            MyRouter.routes.artList,
-          );
-        } else {
-          showErrorSnackbar(
-            context,
-            message: error,
-          );
-        }
-      },
-    );
-  }
-}
-
-class _DeveloperSubmitButton extends ConsumerWidget {
-  const _DeveloperSubmitButton({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final provider = ref.watch(loginProvider);
-
-    return ElevatedButton(
-      child: Text('Developer Login'),
-      onPressed: () async {
-        provider.setEmail('testEmail@gmail.com');
-        provider.setPassword('Password1!');
-
-        final error = await provider.submit();
-        if (error == null) {
-          GoRouter.of(context).push(
-            MyRouter.routes.artList,
+            MyRouter.routes.emailVerification,
           );
         } else {
           showErrorSnackbar(

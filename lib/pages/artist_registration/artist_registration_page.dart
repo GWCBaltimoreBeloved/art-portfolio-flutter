@@ -98,11 +98,11 @@ class _SubmitButton extends ConsumerWidget {
     return ElevatedButton(
       child: Text('Submit'),
       onPressed: () async {
-        final user = await provider.submit();
-        if (user == null) {
-          showErrorSnackbar(context);
-        } else {
+        final error = await provider.submit();
+        if (error == null) {
           GoRouter.of(context).pop(context);
+        } else {
+          showErrorSnackbar(context, message: error);
         }
       },
     );

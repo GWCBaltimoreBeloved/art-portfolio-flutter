@@ -20,13 +20,6 @@ class ArtistListProvider extends ChangeNotifier {
   }
 
   void deleteArtist({required String id}) {
-    Repositories.instance.artistRepository.updateItem(
-        documentId: id,
-        item: Artist(
-            firstName: 'firstName',
-            lastName: 'lastName',
-            description: 'description',
-            instagram: 'instagram',
-            github: 'github'));
+    Repositories.instance.artistRepository.deleteItem(documentId: id);
   }
 }
