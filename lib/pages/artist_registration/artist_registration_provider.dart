@@ -40,12 +40,23 @@ class ArtistRegistrationProvider extends ChangeNotifier {
 
     _newArtist = _newArtist.copyWith(userId: user.uid);
 
-    final artist = await Repositories.instance.artistRepository.addItem(
-      _newArtist,
-    );
+    final myArtist = await Repositories.instance.artistRepository.getMyArtist();
+    if (myArtist == null) {
+      final artist = await Repositories.instance.artistRepository.addItem(
+        _newArtist,
+      );
+      if (artist == null) {
+        return 'Error creating artist';
+      }
+    } else {
+      final success = await Repositories.instance.artistRepository.updateItem(
+        item: _newArtist,
+        documentId: myArtist.documentId,
+      );
 
-    if (artist == null) {
-      return 'Error creating Artist';
+      if (!success) {
+        return 'Error updating artist';
+      }
     }
   }
 }

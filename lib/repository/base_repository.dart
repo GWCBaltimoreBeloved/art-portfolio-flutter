@@ -2,13 +2,13 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class Repository<T> {
+class BaseRepository<T> {
   late final CollectionReference<T> collectionReference;
   late final T Function(DocumentSnapshot<Map<String, dynamic>> document)
       fromDocument;
   late final Map<String, dynamic> Function(T model) toJson;
 
-  Repository({
+  BaseRepository({
     required String collectionName,
     required T Function(Map<String, dynamic> json) fromJson,
     required Map<String, dynamic> Function(T model) toJson,
