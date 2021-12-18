@@ -37,7 +37,7 @@ class _PageHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Registration',
+      'artist Registration',
       style: TextStyle(fontSize: 36),
     );
   }
@@ -82,6 +82,7 @@ class _DescriptionInput extends ConsumerWidget {
 
     return FormTextInput(
       label: 'Description',
+      minLines: 3,
       hintText: 'Many art very cool',
       onChanged: (value) => provider.setDescription(value),
     );
