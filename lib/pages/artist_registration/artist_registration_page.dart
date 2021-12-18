@@ -3,6 +3,7 @@ import 'package:art_portfolio_flutter/common/form_text_input.dart';
 import 'package:art_portfolio_flutter/pages/artist_registration/artist_registration_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
 class ArtistRegistrationPage extends ConsumerWidget {
@@ -13,6 +14,7 @@ class ArtistRegistrationPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(),
       body: ListView(
+        shrinkWrap: true,
         padding: EdgeInsets.only(top: 8, left: 24, right: 24, bottom: 24),
         children: [
           _PageHeader(),
@@ -22,6 +24,8 @@ class ArtistRegistrationPage extends ConsumerWidget {
           _LastNameInput(),
           SizedBox(height: 24),
           _DescriptionInput(),
+          SizedBox(height: 24),
+          _InstagramInput(),
           SizedBox(height: 24),
           _SubmitButton(),
           SizedBox(height: 24),
@@ -69,6 +73,35 @@ class _LastNameInput extends ConsumerWidget {
       label: 'Last Name',
       hintText: 'Feliz',
       onChanged: (value) => provider.setLastName(value),
+    );
+  }
+}
+
+class _InstagramInput extends ConsumerWidget {
+  const _InstagramInput({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final provider = ref.watch(registrationProvider);
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Flexible(
+          child: FormTextInput(
+            label: 'instagram url',
+            hintText: 'kimkardasian',
+            onChanged: (value) => provider.setInstagram(value),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0, top: 22),
+          child: FaIcon(
+            FontAwesomeIcons.instagram,
+            size: 56,
+          ),
+        ),
+      ],
     );
   }
 }

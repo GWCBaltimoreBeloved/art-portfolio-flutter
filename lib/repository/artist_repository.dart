@@ -6,7 +6,7 @@ class ArtistRepository extends BaseRepository<Artist> {
   ArtistRepository()
       : super(
           collectionName: 'artists',
-          fromJson: Artist.fromJson,
+          fromJson: (map) => Artist.fromJson(map),
           toJson: (artist) => artist.toJson(),
         );
 

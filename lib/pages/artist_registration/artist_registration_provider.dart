@@ -26,6 +26,10 @@ class ArtistRegistrationProvider extends ChangeNotifier {
     _newArtist = _newArtist.copyWith(lastName: value);
   }
 
+  void setInstagram(String value) {
+    _newArtist = _newArtist.copyWith(instagram: value);
+  }
+
   void setDescription(String value) {
     _newArtist = _newArtist.copyWith(description: value);
   }
@@ -35,7 +39,7 @@ class ArtistRegistrationProvider extends ChangeNotifier {
         await FirebaseAuth.instance.authStateChanges().first;
 
     if (user == null) {
-      return 'You must be logged in before registering as an artist';
+      return 'You must be log in or create a account as a user before registering as an artist';
     }
 
     _newArtist = _newArtist.copyWith(userId: user.uid);
@@ -56,6 +60,8 @@ class ArtistRegistrationProvider extends ChangeNotifier {
 
       if (!success) {
         return 'Error updating artist';
+      } else {
+        return 'congratulations, your now a new member of artists here';
       }
     }
   }
