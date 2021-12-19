@@ -26,6 +26,12 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Need to access your camera to capture photos of artwork</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Need to access your photo library to select and upload photos of artwork</string>
+	<key>NSMicrophoneUsageDescription</key>
+  	<string>Upload vidoes of artwork</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
