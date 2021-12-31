@@ -54,6 +54,13 @@ class DeveloperPage extends ConsumerWidget {
             ),
             SizedBox(height: 8),
             ElevatedButton(
+              child: Text('Art Feed'),
+              onPressed: () => GoRouter.of(context).push(
+                MyRouter.routes.artFeed,
+              ),
+            ),
+            SizedBox(height: 8),
+            ElevatedButton(
               child: Text('Email Verification Page'),
               onPressed: () => GoRouter.of(context).push(
                 MyRouter.routes.emailVerification,
