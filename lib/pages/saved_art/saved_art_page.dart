@@ -13,12 +13,31 @@ class SavedArtPage extends ConsumerWidget {
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ),
-      body: Center(
-          widthFactor: 27,
-          child: Text(
-            'You have INSERT NUMBER works saved',
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-          )),
+      body: Padding(
+        padding: const EdgeInsets.only(
+          left: 24,
+          top: 24,
+        ),
+        child: Column(
+          children: [
+            Text(
+              'You have INSERT NUMBER works saved',
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 64,
+                top: 64,
+              ),
+              child: Image.network(
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Oranges_-_whole-halved-segment.jpg/1200px-Oranges_-_whole-halved-segment.jpg',
+                width: 80,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
