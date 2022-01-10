@@ -27,4 +27,16 @@
     ```
     git push
     ```
+    Note** You may see the following git message when you try to push:
+    ```
+    The current branch scheduled-broadcast-available-dialog has no upstream branch.
+    To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin scheduled-broadcast-available-dialog
+    ```
+    If you see that message, run the following command to tell git that if the branch you are trying to push to does not exist, you always want to create a new branch with that name.
+    ```
+    git config --global push.default current
+    ```
+    Now run `git push` again, and the error should be gone.
 1. Navigate to the repository in a web browser and create a pull request
