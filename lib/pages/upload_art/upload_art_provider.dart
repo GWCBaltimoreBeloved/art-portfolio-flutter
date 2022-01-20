@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,12 +18,23 @@ class UploadArtProvider extends ChangeNotifier {
   Uint8List? imageBytes;
   XFile? imageFile;
   final _picker = ImagePicker();
+  User? myUser;
+
+  UploadArtProvider() {
+    _getMyUser();
+  }
+
+  Future<void> _getMyUser() async {
+    myUser = FirebaseAuth.instance.currentUser ??
+        await FirebaseAuth.instance.authStateChanges().first;
+  }
 
   Future<void> pickImage() async {
     final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
       imageFile = pickedFile;
+
       try {
         imageBytes = await pickedFile.readAsBytes();
       } catch (e) {
@@ -38,14 +50,28 @@ class UploadArtProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<UploadTask?> uploadFile(XFile file) async {
+  Future<String?> uploadArt() async {
+    final task = await _uploadFile(imageFile!);
+
+    //TODO save the url, name, an description of the upload to the art listing
+  }
+
+  Future<UploadTask?> _uploadFile(XFile file) async {
+    final myUserId = myUser?.uid;
+    if (myUserId == null) {
+      log('Error: Could not upload art. MyUser id was null.');
+
+      return null;
+    }
+
     UploadTask uploadTask;
 
     final uuid = Uuid().v1();
     Reference ref = FirebaseStorage.instance
         .ref()
         .child('uploads')
-        .child('${file.path}_$uuid');
+        .child(myUserId)
+        .child(uuid);
 
     final metadata = SettableMetadata(
       contentType: 'image/jpeg',
