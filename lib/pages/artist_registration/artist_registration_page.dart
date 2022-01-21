@@ -27,6 +27,8 @@ class ArtistRegistrationPage extends ConsumerWidget {
           SizedBox(height: 24),
           _InstagramInput(),
           SizedBox(height: 24),
+          _GithubInput(),
+          SizedBox(height: 24),
           _SubmitButton(),
           SizedBox(height: 24),
         ],
@@ -92,6 +94,35 @@ class _InstagramInput extends ConsumerWidget {
             label: 'instagram url',
             hintText: 'kimkardasian',
             onChanged: (value) => provider.setInstagram(value),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0, top: 22),
+          child: FaIcon(
+            FontAwesomeIcons.instagram,
+            size: 56,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _GithubInput extends ConsumerWidget {
+  const _GithubInput({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final provider = ref.watch(registrationProvider);
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Flexible(
+          child: FormTextInput(
+            label: 'Github url',
+            hintText: 'ariana grande',
+            onChanged: (value) => provider.setGithub(value),
           ),
         ),
         Padding(

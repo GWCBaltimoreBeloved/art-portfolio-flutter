@@ -30,6 +30,10 @@ class ArtistRegistrationProvider extends ChangeNotifier {
     _newArtist = _newArtist.copyWith(instagram: value);
   }
 
+  void setGithub(String value) {
+    _newArtist = _newArtist.copyWith(github: value);
+  }
+
   void setDescription(String value) {
     _newArtist = _newArtist.copyWith(description: value);
   }
