@@ -1,12 +1,14 @@
 # Contributing to the Art Portfolio App
 
+## Creating a fresh branch for new work
+
 1. Open a terminal window and navigate to the `art-portfolio-flutter` project
 
 1. Pull the latest changes
     ```
     git pull
     ```
-1. Download dependencies in case someone edited the pubspec.yaml
+1. Download dependencies
     ```
     flutter pub get
     ```
@@ -40,3 +42,39 @@
     ```
     Now run `git push` again, and the error should be gone.
 1. Navigate to the repository in a web browser and create a pull request
+
+## Updating your branch with latest changes from main
+ 1. Switch to the main branch
+    ```
+    git checkout main
+    ```
+ 1. Update the main branch from remote
+    ```
+    git pull
+    ```
+ 1. Switch back to your branch
+    ```
+    git checkout your_branch
+    ```
+ 1. Merge main into your branch.
+    ```
+    git merge main
+    ```
+    ** This is when you may need to resolve merge conflicts
+    
+    To resolve conflicts:
+    - Go through each conflicts and save the code you want
+    - Stage changes
+        ```
+        git add .
+        ```
+    - Commit changes
+        ```
+        git commit -m "<your message>"
+        ```
+
+
+    If you do not have merge conflicts, this command will open a VIM dialog to edit your commit message. To close the dialog
+    - Type ¨:wq¨
+    - Press enter
+    
