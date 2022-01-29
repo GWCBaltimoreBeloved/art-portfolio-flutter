@@ -20,19 +20,34 @@ class SavedArtPage extends ConsumerWidget {
         ),
         child: Column(
           children: [
-            Text(
-              'You have INSERT NUMBER works saved',
-              style:
-                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 100,
+              ),
+              child: Text(
+                'You have INSERT NUMBER works saved',
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(
                 left: 64,
-                top: 64,
+                top: 46,
               ),
               child: Image.network(
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Oranges_-_whole-halved-segment.jpg/1200px-Oranges_-_whole-halved-segment.jpg',
-                width: 80,
+                'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATYAAACjCAMAAAA3vsLfAAAAG1BMVEX+/v4AAAD////6+vo3NzdOTk6qqqqWlpY2NjZpWDPnAAABwElEQVR4nO3XQW7CQBQFQWLAzP1PnF2WRCpG8ozoOsCTf8sL+3YE3I7bPFcf897MQ6dmO18LOyceOjPbcX/8LOxxn3jq1Gzj6jTvjGWz9bbJVtloq2y0VTbaKhtt/WUbz4WMbbKdM7+hP3ScG2VbyE7Zpo1+rGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGxkq2wL2SnbtNGPbZRtPBcytsm2pLKRspGykbKRdbON/x/+OmPZbL1t5Hwt7Jx46NzP+av/o977olNX9QstbD512cQBXAAAAABJRU5ErkJggg==',
+                width: 170,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 574,
+                top: 0,
+              ),
+              child: Image.network(
+                'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATYAAACjCAMAAAA3vsLfAAAAG1BMVEX+/v4AAAD////6+vo3NzdOTk6qqqqWlpY2NjZpWDPnAAABwElEQVR4nO3XQW7CQBQFQWLAzP1PnF2WRCpG8ozoOsCTf8sL+3YE3I7bPFcf897MQ6dmO18LOyceOjPbcX/8LOxxn3jq1Gzj6jTvjGWz9bbJVtloq2y0VTbaKhtt/WUbz4WMbbKdM7+hP3ScG2VbyE7Zpo1+rGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGxkq2wL2SnbtNGPbZRtPBcytsm2pLKRspGykbKRdbON/x/+OmPZbL1t5Hwt7Jx46NzP+av/o977olNX9QstbD512cQBXAAAAABJRU5ErkJggg==',
+                width: 170,
               ),
             ),
           ],
