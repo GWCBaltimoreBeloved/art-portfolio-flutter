@@ -1,11 +1,10 @@
 import 'package:art_portfolio_flutter/pages/art_list/art_list_page.dart';
 import 'package:art_portfolio_flutter/pages/artist_list/artist_list_page.dart';
 import 'package:art_portfolio_flutter/pages/artist_registration/artist_registration_page.dart';
-import 'package:art_portfolio_flutter/pages/bottom_nav_bar/bottom_nav_bar_view.dart';
-import 'package:art_portfolio_flutter/pages/bottom_nav_bar/shared.dart';
 import 'package:art_portfolio_flutter/pages/create_account/create_account_page.dart';
 import 'package:art_portfolio_flutter/pages/developer/developer_page.dart';
 import 'package:art_portfolio_flutter/pages/email_verification/email_verification_page.dart';
+import 'package:art_portfolio_flutter/pages/gwc_tab_bar/gwc_tab_bar_view.dart';
 import 'package:art_portfolio_flutter/pages/login/login_page.dart';
 import 'package:art_portfolio_flutter/pages/saved_art/saved_art_page.dart';
 import 'package:go_router/go_router.dart';
@@ -26,11 +25,10 @@ class MyRouter {
   static const routes = _Routes();
 
   static final goRouter = GoRouter(
-    // initialLocation: routes.developer,
     routes: [
       GoRoute(
         path: '/',
-        redirect: (_) => '/family/${Families.data[0].id}',
+        redirect: (_) => '/home/${Tabs.artFeed.name}',
       ),
       GoRoute(
         path: routes.artList,
@@ -65,22 +63,11 @@ class MyRouter {
         builder: (_, __) => const EmailVerificationPage(),
       ),
       GoRoute(
-        path: '/family/:fid',
-        builder: (context, state) => BottomNavBarView(
+        path: '/home/:tabName',
+        builder: (context, state) => GWCTabBarView(
           key: state.pageKey,
-          selectedFamily: Families.family(state.params['fid']!),
+          tabName: state.params['tabName'] ?? '',
         ),
-        routes: [
-          GoRoute(
-            path: 'person/:pid',
-            builder: (context, state) {
-              final family = Families.family(state.params['fid']!);
-              final person = family.person(state.params['pid']!);
-
-              return PersonScreen(family: family, person: person);
-            },
-          ),
-        ],
       ),
     ],
   );

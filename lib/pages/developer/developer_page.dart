@@ -19,6 +19,13 @@ class DeveloperPage extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             ElevatedButton(
+              child: Text('Home'),
+              onPressed: () => GoRouter.of(context).push(
+                '/',
+              ),
+            ),
+            SizedBox(height: 8),
+            ElevatedButton(
               child: Text('Login Page'),
               onPressed: () => GoRouter.of(context).push(
                 MyRouter.routes.login,
