@@ -24,7 +24,7 @@ jobs:
       run: flutter pub get
     
     - name: Build release project
-      run: flutter build web -t lib/main-dev.dart
+      run: flutter build web -t lib/main_dev.dart
 
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v2
