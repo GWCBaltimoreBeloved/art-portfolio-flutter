@@ -2,6 +2,9 @@ import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:art_portfolio_flutter/repository/art/models/art.dart';
+import 'package:art_portfolio_flutter/repository/artist/models/artist.dart';
+import 'package:art_portfolio_flutter/repository/repositories.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
@@ -14,14 +17,19 @@ final uploadArtProvider = ChangeNotifierProvider.autoDispose((_) {
 });
 
 class UploadArtProvider extends ChangeNotifier {
-  void setName(String value) {}
+  String? _artTitle;
   Uint8List? imageBytes;
   XFile? imageFile;
   final _picker = ImagePicker();
+  final _artRepository = Repositories.instance.artRepository;
   User? myUser;
 
   UploadArtProvider() {
     _getMyUser();
+  }
+
+  void setTitle(String value) {
+    _artTitle = value;
   }
 
   Future<void> _getMyUser() async {
@@ -51,11 +59,37 @@ class UploadArtProvider extends ChangeNotifier {
   }
 
   Future<String?> uploadArt() async {
+    /// Upload the file to firebase storage
     final task = await _uploadFile(imageFile!);
 
-    //TODO save the url, name, an description of the upload to the art listing
+    final finalState = await task;
+
+    if (finalState == null || finalState.state != TaskState.success) {
+      return 'Error uploading file. Please try again';
+    }
+
+    final downloadUrl = await finalState.ref.getDownloadURL();
+
+    /// Create an entry for this piece of art in our art collection
+    _artRepository.addItem(
+      Art(
+        name: _artTitle ?? task?.snapshot.ref.name ?? '',
+        description: '',
+        url: downloadUrl,
+        // TODO set to my actual artist
+        artist: Artist(
+            documentId: '',
+            userId: 'userId',
+            firstName: 'firstName',
+            lastName: 'lastName',
+            description: 'description',
+            instagram: 'instagram',
+            github: 'github'),
+      ),
+    );
   }
 
+  /// Upload the file to firebase storage
   Future<UploadTask?> _uploadFile(XFile file) async {
     final myUserId = myUser?.uid;
     if (myUserId == null) {

@@ -131,7 +131,7 @@ class _TitleInput extends ConsumerWidget {
     return FormTextInput(
       label: 'Title',
       hintText: 'The Dutchess',
-      onChanged: provider.setName,
+      onChanged: provider.setTitle,
     );
   }
 }
@@ -158,7 +158,9 @@ class _SubmitButton extends ConsumerWidget {
 
               if (error != null) {
                 log('Error uploading art: $error');
-                //TODO add an error toast here
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text('Error uploading art. Please try again'),
+                ));
               }
               GoRouter.of(context).pop(context);
             },
