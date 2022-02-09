@@ -15,7 +15,8 @@ void main() {
       'documentId': 'mockDocumentId',
       'name': 'mockName',
       'description': 'mockDescription',
-      'url': 'mockUrl',
+      'downloadUrl': 'mockDownloadUrl',
+      'firebaseStoragePath': 'mockFirebaseStoragePath',
       'artist': {
         'documentId': 'mockDocumentId',
         'userId': 'mockUserId',
@@ -31,7 +32,8 @@ void main() {
     expect(art.documentId, 'mockDocumentId');
     expect(art.name, 'mockName');
     expect(art.description, 'mockDescription');
-    expect(art.url, 'mockUrl');
+    expect(art.downloadUrl, 'mockDownloadUrl');
+    expect(art.firebaseStoragePath, 'mockFirebaseStoragePath');
     expect(art.artist.documentId, 'mockDocumentId');
     expect(art.artist.userId, 'mockUserId');
     expect(art.artist.firstName, 'mockFirstName');
@@ -44,7 +46,8 @@ void main() {
     final art = Art(
       name: 'mockName',
       description: 'mockDescription',
-      url: 'mockUrl',
+      downloadUrl: 'mockDownloadUrl',
+      firebaseStoragePath: 'mockFirebaseStoragePath',
       artist: Artist(
         userId: 'mockUserId',
         firstName: 'mockFirstName',
@@ -61,7 +64,8 @@ void main() {
         'documentId': '',
         'name': 'mockName',
         'description': 'mockDescription',
-        'url': 'mockUrl',
+        'downloadUrl': 'mockDownloadUrl',
+        'firebaseStoragePath': 'mockFirebaseStoragePath',
         'artist': {
           'documentId': '',
           'userId': 'mockUserId',

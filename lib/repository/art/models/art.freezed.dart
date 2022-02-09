@@ -25,13 +25,15 @@ class _$ArtTearOff {
       {String documentId = '',
       required String name,
       required String description,
-      required String url,
+      required String downloadUrl,
+      required String firebaseStoragePath,
       required Artist artist}) {
     return _Art(
       documentId: documentId,
       name: name,
       description: description,
-      url: url,
+      downloadUrl: downloadUrl,
+      firebaseStoragePath: firebaseStoragePath,
       artist: artist,
     );
   }
@@ -49,7 +51,8 @@ mixin _$Art {
   String get documentId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get url => throw _privateConstructorUsedError;
+  String get downloadUrl => throw _privateConstructorUsedError;
+  String get firebaseStoragePath => throw _privateConstructorUsedError;
   Artist get artist => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -65,7 +68,8 @@ abstract class $ArtCopyWith<$Res> {
       {String documentId,
       String name,
       String description,
-      String url,
+      String downloadUrl,
+      String firebaseStoragePath,
       Artist artist});
 
   $ArtistCopyWith<$Res> get artist;
@@ -84,7 +88,8 @@ class _$ArtCopyWithImpl<$Res> implements $ArtCopyWith<$Res> {
     Object? documentId = freezed,
     Object? name = freezed,
     Object? description = freezed,
-    Object? url = freezed,
+    Object? downloadUrl = freezed,
+    Object? firebaseStoragePath = freezed,
     Object? artist = freezed,
   }) {
     return _then(_value.copyWith(
@@ -100,9 +105,13 @@ class _$ArtCopyWithImpl<$Res> implements $ArtCopyWith<$Res> {
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      url: url == freezed
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
+      downloadUrl: downloadUrl == freezed
+          ? _value.downloadUrl
+          : downloadUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      firebaseStoragePath: firebaseStoragePath == freezed
+          ? _value.firebaseStoragePath
+          : firebaseStoragePath // ignore: cast_nullable_to_non_nullable
               as String,
       artist: artist == freezed
           ? _value.artist
@@ -128,7 +137,8 @@ abstract class _$ArtCopyWith<$Res> implements $ArtCopyWith<$Res> {
       {String documentId,
       String name,
       String description,
-      String url,
+      String downloadUrl,
+      String firebaseStoragePath,
       Artist artist});
 
   @override
@@ -149,7 +159,8 @@ class __$ArtCopyWithImpl<$Res> extends _$ArtCopyWithImpl<$Res>
     Object? documentId = freezed,
     Object? name = freezed,
     Object? description = freezed,
-    Object? url = freezed,
+    Object? downloadUrl = freezed,
+    Object? firebaseStoragePath = freezed,
     Object? artist = freezed,
   }) {
     return _then(_Art(
@@ -165,9 +176,13 @@ class __$ArtCopyWithImpl<$Res> extends _$ArtCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      url: url == freezed
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
+      downloadUrl: downloadUrl == freezed
+          ? _value.downloadUrl
+          : downloadUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      firebaseStoragePath: firebaseStoragePath == freezed
+          ? _value.firebaseStoragePath
+          : firebaseStoragePath // ignore: cast_nullable_to_non_nullable
               as String,
       artist: artist == freezed
           ? _value.artist
@@ -184,7 +199,8 @@ class _$_Art implements _Art {
       {this.documentId = '',
       required this.name,
       required this.description,
-      required this.url,
+      required this.downloadUrl,
+      required this.firebaseStoragePath,
       required this.artist});
 
   factory _$_Art.fromJson(Map<String, dynamic> json) => _$$_ArtFromJson(json);
@@ -197,13 +213,15 @@ class _$_Art implements _Art {
   @override
   final String description;
   @override
-  final String url;
+  final String downloadUrl;
+  @override
+  final String firebaseStoragePath;
   @override
   final Artist artist;
 
   @override
   String toString() {
-    return 'Art(documentId: $documentId, name: $name, description: $description, url: $url, artist: $artist)';
+    return 'Art(documentId: $documentId, name: $name, description: $description, downloadUrl: $downloadUrl, firebaseStoragePath: $firebaseStoragePath, artist: $artist)';
   }
 
   @override
@@ -216,7 +234,10 @@ class _$_Art implements _Art {
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.url, url) &&
+            const DeepCollectionEquality()
+                .equals(other.downloadUrl, downloadUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.firebaseStoragePath, firebaseStoragePath) &&
             const DeepCollectionEquality().equals(other.artist, artist));
   }
 
@@ -226,7 +247,8 @@ class _$_Art implements _Art {
       const DeepCollectionEquality().hash(documentId),
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(url),
+      const DeepCollectionEquality().hash(downloadUrl),
+      const DeepCollectionEquality().hash(firebaseStoragePath),
       const DeepCollectionEquality().hash(artist));
 
   @JsonKey(ignore: true)
@@ -245,7 +267,8 @@ abstract class _Art implements Art {
       {String documentId,
       required String name,
       required String description,
-      required String url,
+      required String downloadUrl,
+      required String firebaseStoragePath,
       required Artist artist}) = _$_Art;
 
   factory _Art.fromJson(Map<String, dynamic> json) = _$_Art.fromJson;
@@ -257,7 +280,9 @@ abstract class _Art implements Art {
   @override
   String get description;
   @override
-  String get url;
+  String get downloadUrl;
+  @override
+  String get firebaseStoragePath;
   @override
   Artist get artist;
   @override

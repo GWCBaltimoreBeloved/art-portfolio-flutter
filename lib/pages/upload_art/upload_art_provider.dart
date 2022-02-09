@@ -84,13 +84,15 @@ class UploadArtProvider extends ChangeNotifier {
     }
 
     final downloadUrl = await finalState.ref.getDownloadURL();
+    final firebaseStoragePath = finalState.ref.fullPath;
 
     /// Create an entry for this piece of art in our art collection
     _artRepository.addItem(
       Art(
         name: _artTitle ?? task?.snapshot.ref.name ?? '',
         description: 'test description for testing an upload',
-        url: downloadUrl,
+        downloadUrl: downloadUrl,
+        firebaseStoragePath: firebaseStoragePath,
         artist: myArtist!,
       ),
     );

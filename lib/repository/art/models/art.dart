@@ -10,7 +10,8 @@ class Art with _$Art {
     @Default('') final String documentId,
     required final String name,
     required final String description,
-    required final String url,
+    required final String downloadUrl,
+    required final String firebaseStoragePath,
     required final Artist artist,
   }) = _Art;
 
