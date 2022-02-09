@@ -22,10 +22,13 @@ class UploadArtProvider extends ChangeNotifier {
   XFile? imageFile;
   final _picker = ImagePicker();
   final _artRepository = Repositories.instance.artRepository;
+  final _artistRepository = Repositories.instance.artistRepository;
   User? myUser;
+  Artist? myArtist;
 
   UploadArtProvider() {
     _getMyUser();
+    _getMyArtist();
   }
 
   void setTitle(String value) {
@@ -35,6 +38,12 @@ class UploadArtProvider extends ChangeNotifier {
   Future<void> _getMyUser() async {
     myUser = FirebaseAuth.instance.currentUser ??
         await FirebaseAuth.instance.authStateChanges().first;
+    notifyListeners();
+  }
+
+  Future<void> _getMyArtist() async {
+    myArtist = await _artistRepository.getMyArtist();
+    notifyListeners();
   }
 
   Future<void> pickImage() async {
@@ -59,6 +68,12 @@ class UploadArtProvider extends ChangeNotifier {
   }
 
   Future<String?> uploadArt() async {
+    if (myArtist == null) {
+      // This should never happen.
+      // The user should not be able to get past the error screen without an artist
+      return 'Error: Artist was null. Must have a registered artist to upload art';
+    }
+
     /// Upload the file to firebase storage
     final task = await _uploadFile(imageFile!);
 
@@ -74,17 +89,9 @@ class UploadArtProvider extends ChangeNotifier {
     _artRepository.addItem(
       Art(
         name: _artTitle ?? task?.snapshot.ref.name ?? '',
-        description: '',
+        description: 'test description for testing an upload',
         url: downloadUrl,
-        // TODO set to my actual artist
-        artist: Artist(
-            documentId: '',
-            userId: 'userId',
-            firstName: 'firstName',
-            lastName: 'lastName',
-            description: 'description',
-            instagram: 'instagram',
-            github: 'github'),
+        artist: myArtist!,
       ),
     );
   }

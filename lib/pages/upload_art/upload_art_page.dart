@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:art_portfolio_flutter/common/form_text_input.dart';
 import 'package:art_portfolio_flutter/common/show_loading_dialog.dart';
+import 'package:art_portfolio_flutter/my_router.dart';
 import 'package:art_portfolio_flutter/pages/upload_art/upload_art_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,15 +26,24 @@ class _PageBody extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final provider = ref.watch(uploadArtProvider);
     if (provider.myUser == null) {
-      return _NotLoggedInView();
+      return _ErrorView(
+        'Error: User must be logged in before accessing this page',
+      );
+    }
+
+    if (provider.myArtist == null) {
+      return _ErrorView(
+        'Error: Artist was null. Must have a registered artist to upload art',
+      );
     }
 
     return _UploadArtDetails();
   }
 }
 
-class _NotLoggedInView extends StatelessWidget {
-  const _NotLoggedInView({Key? key}) : super(key: key);
+class _ErrorView extends StatelessWidget {
+  final String error;
+  const _ErrorView(this.error, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +52,7 @@ class _NotLoggedInView extends StatelessWidget {
       children: [
         _PageHeader(),
         SizedBox(height: 24),
-        Text('Error: User must be logged in before accessing this page'),
+        Text(error),
       ],
     );
   }
@@ -162,7 +172,7 @@ class _SubmitButton extends ConsumerWidget {
                   content: Text('Error uploading art. Please try again'),
                 ));
               }
-              GoRouter.of(context).pop(context);
+              GoRouter.of(context).go(MyRouter.routes.developer);
             },
     );
   }

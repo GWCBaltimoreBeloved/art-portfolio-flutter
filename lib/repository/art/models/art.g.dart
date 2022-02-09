@@ -19,5 +19,5 @@ Map<String, dynamic> _$$_ArtToJson(_$_Art instance) => <String, dynamic>{
       'name': instance.name,
       'description': instance.description,
       'url': instance.url,
-      'artist': instance.artist,
+      'artist': instance.artist.toJson(),
     };
