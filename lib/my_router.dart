@@ -1,3 +1,4 @@
+import 'package:art_portfolio_flutter/pages/art_details/art_details_page.dart';
 import 'package:art_portfolio_flutter/pages/art_list/art_list_page.dart';
 import 'package:art_portfolio_flutter/pages/artist_list/artist_list_page.dart';
 import 'package:art_portfolio_flutter/pages/artist_registration/artist_registration_page.dart';
@@ -20,6 +21,7 @@ class _Routes {
   final createAccount = '/createAccount';
   final savedArt = '/savedArt';
   final emailVerification = '/emailVerification';
+  final artDetails = '/artDetails';
 }
 
 class MyRouter {
@@ -63,6 +65,10 @@ class MyRouter {
       GoRoute(
         path: routes.emailVerification,
         builder: (_, __) => const EmailVerificationPage(),
+      ),
+      GoRoute(
+        path: routes.artDetails,
+        builder: (_, __) => const ArtDetailsPage(),
       ),
     ],
   );

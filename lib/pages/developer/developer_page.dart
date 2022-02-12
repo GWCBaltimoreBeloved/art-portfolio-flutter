@@ -85,6 +85,13 @@ class DeveloperPage extends ConsumerWidget {
               ),
               SizedBox(height: 8),
               ElevatedButton(
+                child: Text('Art Details'),
+                onPressed: () => GoRouter.of(context).push(
+                  MyRouter.routes.artDetails,
+                ),
+              ),
+              SizedBox(height: 8),
+              ElevatedButton(
                 child: Text('Show loading dialog'),
                 onPressed: () async {
                   final closeDialog = showLoadingDialog(
@@ -95,7 +102,6 @@ class DeveloperPage extends ConsumerWidget {
                   closeDialog();
                 },
               ),
-              SizedBox(height: 24),
             ],
           ),
         ),
