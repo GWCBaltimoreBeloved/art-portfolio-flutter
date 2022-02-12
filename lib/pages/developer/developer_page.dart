@@ -22,6 +22,13 @@ class DeveloperPage extends ConsumerWidget {
               _PageHeader(),
               SizedBox(height: 24),
               ElevatedButton(
+                child: Text('Home'),
+                onPressed: () => GoRouter.of(context).push(
+                  MyRouter.routes.home,
+                ),
+              ),
+              SizedBox(height: 8),
+              ElevatedButton(
                 child: Text('Login Page'),
                 onPressed: () => GoRouter.of(context).push(
                   MyRouter.routes.login,

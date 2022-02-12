@@ -5,6 +5,7 @@ import 'package:art_portfolio_flutter/pages/artist_registration/artist_registrat
 import 'package:art_portfolio_flutter/pages/create_account/create_account_page.dart';
 import 'package:art_portfolio_flutter/pages/developer/developer_page.dart';
 import 'package:art_portfolio_flutter/pages/email_verification/email_verification_page.dart';
+import 'package:art_portfolio_flutter/pages/gwc_tab_bar/gwc_tab_bar_view.dart';
 import 'package:art_portfolio_flutter/pages/login/login_page.dart';
 import 'package:art_portfolio_flutter/pages/saved_art/saved_art_page.dart';
 import 'package:art_portfolio_flutter/pages/upload_art/upload_art_page.dart';
@@ -12,6 +13,7 @@ import 'package:go_router/go_router.dart';
 
 class _Routes {
   const _Routes();
+  final home = '/';
   final artistRegistration = '/artistRegistration';
   final uploadArt = '/uploadArt';
   final artistList = '/artistList';
@@ -28,8 +30,18 @@ class MyRouter {
   static const routes = _Routes();
 
   static final goRouter = GoRouter(
-    initialLocation: routes.developer,
     routes: [
+      GoRoute(
+        path: '/',
+        redirect: (_) => '/home/${Tabs.artFeed.name}',
+      ),
+      GoRoute(
+        path: '/home/:tabName',
+        builder: (context, state) => GWCTabBarView(
+          key: state.pageKey,
+          tabName: state.params['tabName'] ?? '',
+        ),
+      ),
       GoRoute(
         path: routes.artList,
         builder: (_, __) => const ArtListPage(),
