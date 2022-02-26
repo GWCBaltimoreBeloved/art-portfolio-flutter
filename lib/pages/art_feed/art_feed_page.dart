@@ -14,9 +14,7 @@ class ArtFeedPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: InkWell(
-            onTap: !kDebugMode
-                ? null
-                : () => GoRouter.of(context).go(MyRouter.routes.developer),
+            onTap: () => GoRouter.of(context).go(MyRouter.routes.developer),
             child: Text('Art Feed Page')),
       ),
       body: _PageBody(),
