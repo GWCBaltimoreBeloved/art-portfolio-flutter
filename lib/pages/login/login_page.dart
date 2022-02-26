@@ -125,7 +125,7 @@ class _SubmitButton extends ConsumerWidget {
         final error = await provider.submit();
         if (error == null) {
           GoRouter.of(context).push(
-            MyRouter.routes.artList,
+            MyRouter.routes.artFeed,
           );
         } else {
           showErrorSnackbar(
@@ -154,7 +154,7 @@ class _DeveloperSubmitButton extends ConsumerWidget {
         final error = await provider.submit();
         if (error == null) {
           GoRouter.of(context).push(
-            MyRouter.routes.artList,
+            MyRouter.routes.artFeed,
           );
         } else {
           showErrorSnackbar(

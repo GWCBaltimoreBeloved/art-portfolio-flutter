@@ -1,4 +1,4 @@
-import 'package:art_portfolio_flutter/pages/art_list/art_list_page.dart';
+import 'package:art_portfolio_flutter/pages/art_feed/art_feed_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -84,9 +84,9 @@ class _GWCTabBarViewState extends State<GWCTabBarView>
       body: TabBarView(
         controller: _controller,
         children: [
-          ArtListPage(),
-          ArtListPage(),
-          ArtListPage(),
+          ArtFeedPage(),
+          ArtFeedPage(),
+          ArtFeedPage(),
         ],
       ),
       bottomNavigationBar: TabBar(

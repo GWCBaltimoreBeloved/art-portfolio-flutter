@@ -13,7 +13,7 @@ class EmailVerificationPage extends ConsumerWidget {
         (previous, current) {
       if (current.isUserVerified) {
         GoRouter.of(context).go(
-          MyRouter.routes.artList,
+          MyRouter.routes.artFeed,
         );
       }
     });
