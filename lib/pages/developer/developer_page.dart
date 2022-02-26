@@ -64,9 +64,9 @@ class DeveloperPage extends ConsumerWidget {
               ),
               SizedBox(height: 8),
               ElevatedButton(
-                child: Text('Art List Page'),
+                child: Text('Art Feed Page'),
                 onPressed: () => GoRouter.of(context).push(
-                  MyRouter.routes.artList,
+                  MyRouter.routes.artFeed,
                 ),
               ),
               SizedBox(height: 8),

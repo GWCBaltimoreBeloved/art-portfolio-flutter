@@ -1,13 +1,13 @@
 import 'package:art_portfolio_flutter/my_router.dart';
-import 'package:art_portfolio_flutter/pages/art_list/art_list_provider.dart';
+import 'package:art_portfolio_flutter/pages/art_feed/art_feed_provider.dart';
 import 'package:art_portfolio_flutter/repository/art/models/art.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class ArtListPage extends ConsumerWidget {
-  const ArtListPage({Key? key}) : super(key: key);
+class ArtFeedPage extends ConsumerWidget {
+  const ArtFeedPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -17,7 +17,7 @@ class ArtListPage extends ConsumerWidget {
             onTap: !kDebugMode
                 ? null
                 : () => GoRouter.of(context).go(MyRouter.routes.developer),
-            child: Text('Art List Page')),
+            child: Text('Art Feed Page')),
       ),
       body: _PageBody(),
     );
@@ -29,14 +29,31 @@ class _PageBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final provider = ref.watch(artListProvider);
+    final provider = ref.watch(artFeedProvider);
 
-    return ListView.builder(
-      itemCount: provider.artList.length,
-      itemBuilder: (context, index) {
-        final artItem = provider.artList[index];
-        return _ListItem(artItem);
-      },
+    return Padding(
+      padding: const EdgeInsets.all(24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            '${provider.artList.length} results found',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: provider.artList.length,
+              itemBuilder: (context, index) {
+                final artItem = provider.artList[index];
+                return _ListItem(artItem);
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -48,7 +65,9 @@ class _ListItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        Image.network(artItem.downloadUrl),
         Text(
           artItem.name,
           style: TextStyle(
