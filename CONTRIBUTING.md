@@ -31,10 +31,10 @@
     ```
     Note** You may see the following git message when you try to push:
     ```
-    The current branch scheduled-broadcast-available-dialog has no upstream branch.
+    The current branch your_branch has no upstream branch.
     To push the current branch and set the remote as upstream, use
 
-    git push --set-upstream origin scheduled-broadcast-available-dialog
+    git push --set-upstream origin your_branch
     ```
     If you see that message, run the following command to tell git that if the branch you are trying to push to does not exist, you always want to create a new branch with that name.
     ```
