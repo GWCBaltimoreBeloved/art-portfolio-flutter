@@ -1,7 +1,6 @@
 import 'package:art_portfolio_flutter/my_router.dart';
 import 'package:art_portfolio_flutter/pages/art_feed/art_feed_provider.dart';
 import 'package:art_portfolio_flutter/repository/art/models/art.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';

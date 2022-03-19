@@ -1,3 +1,4 @@
+import 'package:art_portfolio_flutter/pages/saved_art/saved_art_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -6,10 +7,11 @@ class SavedArtPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final provider = ref.watch(savedArtProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          '~Saved Art~',
+          'Saved',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ),
@@ -24,10 +26,24 @@ class SavedArtPage extends ConsumerWidget {
               padding: const EdgeInsets.only(
                 left: 100,
               ),
-              child: Text(
-                'You have INSERT NUMBER works saved',
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              child: Row(
+                children: [
+                  Text(
+                    'You have saved ',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.black),
+                  ),
+                  Text(
+                    '${provider.savedArtList.length} ',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.red),
+                  ),
+                  Text(
+                    'works',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.black),
+                  ),
+                ],
               ),
             ),
             Padding(
