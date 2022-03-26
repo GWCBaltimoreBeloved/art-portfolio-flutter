@@ -17,7 +17,6 @@ class SavedArtProvider extends ChangeNotifier {
   Future<void> retrieveSavedArtList() async {
     final list = await Repositories.instance.artRepository.getList();
     savedArtList = list ?? [];
-
-    notifyListeners();
+    notifyListeners(); //tells every widget that listens to this provider to rebuild
   }
 }

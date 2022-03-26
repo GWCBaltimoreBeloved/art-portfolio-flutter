@@ -10,10 +10,7 @@ class SavedArtPage extends ConsumerWidget {
     final provider = ref.watch(savedArtProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Saved',
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-        ),
+        title: _PageTitle(),
       ),
       body: Padding(
         padding: const EdgeInsets.only(
@@ -26,49 +23,83 @@ class SavedArtPage extends ConsumerWidget {
               padding: const EdgeInsets.only(
                 left: 100,
               ),
-              child: Row(
-                children: [
-                  Text(
-                    'You have saved ',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black),
-                  ),
-                  Text(
-                    '${provider.savedArtList.length} ',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.red),
-                  ),
-                  Text(
-                    'works',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.black),
-                  ),
-                ],
-              ),
+              child: _ArtCount(), //acts as a parameter
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 64,
-                top: 46,
-              ),
-              child: Image.network(
-                'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATYAAACjCAMAAAA3vsLfAAAAG1BMVEX+/v4AAAD////6+vo3NzdOTk6qqqqWlpY2NjZpWDPnAAABwElEQVR4nO3XQW7CQBQFQWLAzP1PnF2WRCpG8ozoOsCTf8sL+3YE3I7bPFcf897MQ6dmO18LOyceOjPbcX/8LOxxn3jq1Gzj6jTvjGWz9bbJVtloq2y0VTbaKhtt/WUbz4WMbbKdM7+hP3ScG2VbyE7Zpo1+rGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGxkq2wL2SnbtNGPbZRtPBcytsm2pLKRspGykbKRdbON/x/+OmPZbL1t5Hwt7Jx46NzP+av/o977olNX9QstbD512cQBXAAAAABJRU5ErkJggg==',
-                width: 170,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 574,
-                top: 0,
-              ),
-              child: Image.network(
-                'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATYAAACjCAMAAAA3vsLfAAAAG1BMVEX+/v4AAAD////6+vo3NzdOTk6qqqqWlpY2NjZpWDPnAAABwElEQVR4nO3XQW7CQBQFQWLAzP1PnF2WRCpG8ozoOsCTf8sL+3YE3I7bPFcf897MQ6dmO18LOyceOjPbcX/8LOxxn3jq1Gzj6jTvjGWz9bbJVtloq2y0VTbaKhtt/WUbz4WMbbKdM7+hP3ScG2VbyE7Zpo1+rGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGykbKRspGxkq2wL2SnbtNGPbZRtPBcytsm2pLKRspGykbKRdbON/x/+OmPZbL1t5Hwt7Jx46NzP+av/o977olNX9QstbD512cQBXAAAAABJRU5ErkJggg==',
-                width: 170,
-              ),
-            ),
+            Expanded(
+                child: Padding(
+              padding: const EdgeInsets.only(top: 24),
+              child: _ArtGrid(),
+            )),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _ArtGrid extends ConsumerWidget {
+  const _ArtGrid({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    //connects this widget to the saved art provider so it can listen to it
+    final provider = ref.watch(savedArtProvider);
+    return GridView.count(
+      mainAxisSpacing: 50,
+      crossAxisSpacing: 50,
+      crossAxisCount: 3,
+      children: provider.savedArtList.map((item) {
+        return Center /*center can't take multiple children so we give it one child (which is a collumn) which can then produce multiple children*/ (
+          child: Column(
+            children: [
+              Image.network(item.downloadUrl),
+              Text(
+                item.name, //name of the picture
+                style: Theme.of(context).textTheme.headline5,
+              ),
+            ],
+          ),
+        );
+      }).toList(),
+    );
+  }
+}
+
+class _ArtCount extends ConsumerWidget {
+  const _ArtCount({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final provider = ref.watch(savedArtProvider);
+    return Row(
+      children: [
+        Text(
+          'You have saved ',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+        ),
+        Text(
+          '${provider.savedArtList.length} ',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
+        ),
+        Text(
+          'works',
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+        ),
+      ],
+    );
+  }
+}
+
+class _PageTitle extends StatelessWidget {
+  const _PageTitle({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text(
+      'Saved',
+      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
     );
   }
 }
