@@ -1,6 +1,6 @@
+import 'package:art_portfolio_flutter/common/globals.dart';
 import 'package:art_portfolio_flutter/repository/artist/models/artist.dart';
 import 'package:art_portfolio_flutter/repository/base_repository.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class ArtistRepository extends BaseRepository<Artist> {
   ArtistRepository()
@@ -11,8 +11,7 @@ class ArtistRepository extends BaseRepository<Artist> {
         );
 
   Future<Artist?> getMyArtist() async {
-    final myUser = FirebaseAuth.instance.currentUser ??
-        await FirebaseAuth.instance.authStateChanges().first;
+    final myUser = await Globals.getMyUser();
 
     if (myUser == null) {
       return null;
@@ -22,5 +21,17 @@ class ArtistRepository extends BaseRepository<Artist> {
     if (filteredList.docs.isNotEmpty) {
       return filteredList.docs.first.data();
     }
+  }
+
+  Future<Stream<Artist>?> getMyArtistStream() async {
+    final myUser = await Globals.getMyUser();
+
+    if (myUser == null) {
+      return null;
+    }
+    return collectionReference
+        .where('userId', isEqualTo: myUser.uid)
+        .snapshots()
+        .map((event) => event.docs.first.data());
   }
 }

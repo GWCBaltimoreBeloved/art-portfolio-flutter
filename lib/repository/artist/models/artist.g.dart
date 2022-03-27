@@ -14,6 +14,9 @@ _$_Artist _$$_ArtistFromJson(Map<String, dynamic> json) => _$_Artist(
       description: json['description'] as String,
       instagram: json['instagram'] as String,
       github: json['github'] as String,
+      favoriteArt: (json['favoriteArt'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_ArtistToJson(_$_Artist instance) => <String, dynamic>{
@@ -24,4 +27,5 @@ Map<String, dynamic> _$$_ArtistToJson(_$_Artist instance) => <String, dynamic>{
       'description': instance.description,
       'instagram': instance.instagram,
       'github': instance.github,
+      'favoriteArt': instance.favoriteArt,
     };

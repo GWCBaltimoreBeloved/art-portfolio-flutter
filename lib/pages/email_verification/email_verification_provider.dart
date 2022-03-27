@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:art_portfolio_flutter/common/globals.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,7 +20,7 @@ class EmailVerificationProvider extends ChangeNotifier {
     Timer.periodic(
       const Duration(seconds: 3),
       (timer) async {
-        User? user = FirebaseAuth.instance.currentUser;
+        User? user = await Globals.getMyUser();
         await user?.reload();
         if (user != null && user.emailVerified) {
           isUserVerified = true;
@@ -30,8 +31,8 @@ class EmailVerificationProvider extends ChangeNotifier {
     );
   }
 
-  void resendEmail() {
-    User? user = FirebaseAuth.instance.currentUser;
+  void resendEmail() async {
+    User? user = await Globals.getMyUser();
 
     if (user != null && !user.emailVerified) {
       user.sendEmailVerification();

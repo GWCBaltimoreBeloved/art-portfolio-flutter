@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:art_portfolio_flutter/common/globals.dart';
 import 'package:art_portfolio_flutter/repository/art/models/art.dart';
 import 'package:art_portfolio_flutter/repository/artist/models/artist.dart';
 import 'package:art_portfolio_flutter/repository/repositories.dart';
@@ -36,8 +37,7 @@ class UploadArtProvider extends ChangeNotifier {
   }
 
   Future<void> _getMyUser() async {
-    myUser = FirebaseAuth.instance.currentUser ??
-        await FirebaseAuth.instance.authStateChanges().first;
+    myUser = await Globals.getMyUser();
     notifyListeners();
   }
 

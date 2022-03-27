@@ -18,6 +18,7 @@ void main() {
       'description': 'mockDescription',
       'instagram': 'mockInstagram',
       'github': 'mockGithub',
+      'favoriteArt': [],
     };
 
     final artist = Artist.fromJson(mockJson);
@@ -38,6 +39,7 @@ void main() {
       description: 'mockDescription',
       instagram: 'mockInstagram',
       github: 'mockGithub',
+      favoriteArt: [],
     );
 
     expect(artist.toJson(), {
@@ -48,6 +50,7 @@ void main() {
       'description': 'mockDescription',
       'instagram': 'mockInstagram',
       'github': 'mockGithub',
+      'favoriteArt': [],
     });
   });
 }

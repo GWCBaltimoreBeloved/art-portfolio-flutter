@@ -25,6 +25,7 @@ void main() {
         'description': 'mockDescription',
         'instagram': 'mockInstagram',
         'github': 'mockGithub',
+        'favoriteArt': [],
       },
     };
     final art = Art.fromJson(mockJson);
@@ -55,6 +56,7 @@ void main() {
         description: 'mockDescription',
         instagram: 'mockInstagram',
         github: 'mockGithub',
+        favoriteArt: [],
       ),
     );
 
@@ -74,6 +76,7 @@ void main() {
           'description': 'mockDescription',
           'instagram': 'mockInstagram',
           'github': 'mockGithub',
+          'favoriteArt': [],
         }
       },
     );

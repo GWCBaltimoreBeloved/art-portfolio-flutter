@@ -60,6 +60,15 @@ class BaseRepository<T> {
     }
   }
 
+  Future<T?> getById({required String itemId}) async {
+    try {
+      final snapshot = await collectionReference.doc(itemId).get();
+      return snapshot.data();
+    } catch (e) {
+      log('$_path Error getting item by id: $e');
+    }
+  }
+
   Future<List<T>?> getList() async {
     try {
       final snapshots = await collectionReference.get();

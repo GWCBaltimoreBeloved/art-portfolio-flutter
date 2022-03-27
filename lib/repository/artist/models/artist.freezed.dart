@@ -28,7 +28,8 @@ class _$ArtistTearOff {
       required String lastName,
       required String description,
       required String instagram,
-      required String github}) {
+      required String github,
+      required List<String> favoriteArt}) {
     return _Artist(
       documentId: documentId,
       userId: userId,
@@ -37,6 +38,7 @@ class _$ArtistTearOff {
       description: description,
       instagram: instagram,
       github: github,
+      favoriteArt: favoriteArt,
     );
   }
 
@@ -57,6 +59,7 @@ mixin _$Artist {
   String get description => throw _privateConstructorUsedError;
   String get instagram => throw _privateConstructorUsedError;
   String get github => throw _privateConstructorUsedError;
+  List<String> get favoriteArt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -74,7 +77,8 @@ abstract class $ArtistCopyWith<$Res> {
       String lastName,
       String description,
       String instagram,
-      String github});
+      String github,
+      List<String> favoriteArt});
 }
 
 /// @nodoc
@@ -94,6 +98,7 @@ class _$ArtistCopyWithImpl<$Res> implements $ArtistCopyWith<$Res> {
     Object? description = freezed,
     Object? instagram = freezed,
     Object? github = freezed,
+    Object? favoriteArt = freezed,
   }) {
     return _then(_value.copyWith(
       documentId: documentId == freezed
@@ -124,6 +129,10 @@ class _$ArtistCopyWithImpl<$Res> implements $ArtistCopyWith<$Res> {
           ? _value.github
           : github // ignore: cast_nullable_to_non_nullable
               as String,
+      favoriteArt: favoriteArt == freezed
+          ? _value.favoriteArt
+          : favoriteArt // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -140,7 +149,8 @@ abstract class _$ArtistCopyWith<$Res> implements $ArtistCopyWith<$Res> {
       String lastName,
       String description,
       String instagram,
-      String github});
+      String github,
+      List<String> favoriteArt});
 }
 
 /// @nodoc
@@ -161,6 +171,7 @@ class __$ArtistCopyWithImpl<$Res> extends _$ArtistCopyWithImpl<$Res>
     Object? description = freezed,
     Object? instagram = freezed,
     Object? github = freezed,
+    Object? favoriteArt = freezed,
   }) {
     return _then(_Artist(
       documentId: documentId == freezed
@@ -191,6 +202,10 @@ class __$ArtistCopyWithImpl<$Res> extends _$ArtistCopyWithImpl<$Res>
           ? _value.github
           : github // ignore: cast_nullable_to_non_nullable
               as String,
+      favoriteArt: favoriteArt == freezed
+          ? _value.favoriteArt
+          : favoriteArt // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -205,7 +220,8 @@ class _$_Artist implements _Artist {
       required this.lastName,
       required this.description,
       required this.instagram,
-      required this.github});
+      required this.github,
+      required this.favoriteArt});
 
   factory _$_Artist.fromJson(Map<String, dynamic> json) =>
       _$$_ArtistFromJson(json);
@@ -225,10 +241,12 @@ class _$_Artist implements _Artist {
   final String instagram;
   @override
   final String github;
+  @override
+  final List<String> favoriteArt;
 
   @override
   String toString() {
-    return 'Artist(documentId: $documentId, userId: $userId, firstName: $firstName, lastName: $lastName, description: $description, instagram: $instagram, github: $github)';
+    return 'Artist(documentId: $documentId, userId: $userId, firstName: $firstName, lastName: $lastName, description: $description, instagram: $instagram, github: $github, favoriteArt: $favoriteArt)';
   }
 
   @override
@@ -244,7 +262,9 @@ class _$_Artist implements _Artist {
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.instagram, instagram) &&
-            const DeepCollectionEquality().equals(other.github, github));
+            const DeepCollectionEquality().equals(other.github, github) &&
+            const DeepCollectionEquality()
+                .equals(other.favoriteArt, favoriteArt));
   }
 
   @override
@@ -256,7 +276,8 @@ class _$_Artist implements _Artist {
       const DeepCollectionEquality().hash(lastName),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(instagram),
-      const DeepCollectionEquality().hash(github));
+      const DeepCollectionEquality().hash(github),
+      const DeepCollectionEquality().hash(favoriteArt));
 
   @JsonKey(ignore: true)
   @override
@@ -277,7 +298,8 @@ abstract class _Artist implements Artist {
       required String lastName,
       required String description,
       required String instagram,
-      required String github}) = _$_Artist;
+      required String github,
+      required List<String> favoriteArt}) = _$_Artist;
 
   factory _Artist.fromJson(Map<String, dynamic> json) = _$_Artist.fromJson;
 
@@ -295,6 +317,8 @@ abstract class _Artist implements Artist {
   String get instagram;
   @override
   String get github;
+  @override
+  List<String> get favoriteArt;
   @override
   @JsonKey(ignore: true)
   _$ArtistCopyWith<_Artist> get copyWith => throw _privateConstructorUsedError;

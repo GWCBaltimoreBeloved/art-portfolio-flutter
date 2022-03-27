@@ -1,3 +1,4 @@
+import 'package:art_portfolio_flutter/common/globals.dart';
 import 'package:art_portfolio_flutter/repository/artist/models/artist.dart';
 import 'package:art_portfolio_flutter/repository/repositories.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -16,6 +17,7 @@ class ArtistRegistrationProvider extends ChangeNotifier {
     description: '',
     github: '',
     instagram: '',
+    favoriteArt: [],
   );
 
   void setFirstName(String value) {
@@ -31,8 +33,7 @@ class ArtistRegistrationProvider extends ChangeNotifier {
   }
 
   Future<String?> submit() async {
-    User? user = FirebaseAuth.instance.currentUser ??
-        await FirebaseAuth.instance.authStateChanges().first;
+    User? user = await Globals.getMyUser();
 
     if (user == null) {
       return 'You must be logged in before registering as an artist';

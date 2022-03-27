@@ -13,6 +13,7 @@ class Artist with _$Artist {
     required final String description,
     required final String instagram,
     required final String github,
+    required final List<String> favoriteArt,
   }) = _Artist;
 
   factory Artist.fromJson(Map<String, dynamic> json) => _$ArtistFromJson(json);

@@ -7,7 +7,6 @@ class SavedArtPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final provider = ref.watch(savedArtProvider);
     return Scaffold(
       appBar: AppBar(
         title: _PageTitle(),
@@ -49,7 +48,8 @@ class _ArtGrid extends ConsumerWidget {
       crossAxisSpacing: 50,
       crossAxisCount: 3,
       children: provider.savedArtList.map((item) {
-        return Center /*center can't take multiple children so we give it one child (which is a collumn) which can then produce multiple children*/ (
+        /*center can't take multiple children so we give it one child (which is a collumn) which can then produce multiple children*/
+        return Center(
           child: Column(
             children: [
               Image.network(item.downloadUrl),
