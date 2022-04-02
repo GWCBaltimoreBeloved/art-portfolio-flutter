@@ -52,7 +52,23 @@ class _ArtGrid extends ConsumerWidget {
         return Center(
           child: Column(
             children: [
-              Image.network(item.downloadUrl),
+              Stack(
+                children: [
+                  Image.network(item.downloadUrl),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: IconButton(
+                      onPressed: () {
+                        print('icon button pressed');
+                      },
+                      icon: Icon(
+                        Icons.favorite,
+                        color: Colors.pink,
+                      ),
+                    ),
+                  )
+                ],
+              ),
               Text(
                 item.name, //name of the picture
                 style: Theme.of(context).textTheme.headline5,
