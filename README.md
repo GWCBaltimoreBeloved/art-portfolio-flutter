@@ -27,4 +27,4 @@ https://git-scm.com/downloads
     ```
     
 
-You are now ready to begin contributiong! Head over to the CONTRIBUTING.md to see how to contribute.
+You are now ready to begin contributing! Head over to the CONTRIBUTING.md to see how to contribute.
