@@ -59,7 +59,7 @@ class _ArtGrid extends ConsumerWidget {
                     alignment: Alignment.topLeft,
                     child: IconButton(
                       onPressed: () {
-                        print('icon button pressed');
+                        //print('icon button pressed');
                       },
                       icon: Icon(
                         Icons.favorite,
