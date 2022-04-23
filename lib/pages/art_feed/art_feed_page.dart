@@ -61,10 +61,23 @@ class _ListItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final provider = ref.watch(artFeedProvider);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Image.network(artItem.downloadUrl),
+        Stack(children: [
+          Image.network(artItem.downloadUrl),
+          IconButton(
+              icon: Icon(
+                Icons.favorite,
+                color: provider.isFavoriteArt(artItem.documentId)
+                    ? Colors.pink
+                    : Colors.white,
+                size: 30.0,
+                semanticLabel: 'Text to announce in accessibility modes',
+              ),
+              onPressed: () {}),
+        ]),
         Text(
           artItem.name,
           style: TextStyle(
