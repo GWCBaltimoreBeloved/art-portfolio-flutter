@@ -76,7 +76,9 @@ class _ListItem extends ConsumerWidget {
                 size: 30.0,
                 semanticLabel: 'Text to announce in accessibility modes',
               ),
-              onPressed: () {}),
+              onPressed: () {
+                provider.toggleFavoriteStatus(artItem.documentId);
+              }),
         ]),
         Text(
           artItem.name,

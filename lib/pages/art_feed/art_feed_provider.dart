@@ -33,7 +33,27 @@ class ArtFeedProvider extends ChangeNotifier {
 
   bool isFavoriteArt(String artId) {
     return myArtist?.favoriteArt.contains(artId) == true;
+  }
 
-    //return artId in retrieveMyArtist().favArtList();
+  Future<void> toggleFavoriteStatus(String artId) async {
+    final currentStatus = isFavoriteArt(artId);
+
+    //get list
+    final updatedFavoriteList = myArtist!.favoriteArt;
+    //update list
+    if (currentStatus == true) {
+      updatedFavoriteList.remove(artId);
+    } else {
+      updatedFavoriteList.add(artId);
+    }
+    //set list on artist
+    final updatedArtist = myArtist!.copyWith(favoriteArt: updatedFavoriteList);
+
+    //update artist in repository
+    await Repositories.instance.artistRepository.updateItem(
+      item: updatedArtist,
+      documentId: myArtist!.documentId,
+    );
+    retrieveMyArtist();
   }
 }
